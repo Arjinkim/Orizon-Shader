@@ -1,58 +1,123 @@
 # Orizon Shader
-<img src="assets/banner.jpg" width="100%" height="100%" alt="Orizon Shader Banner">
 
-**Orizon Shader** is an advanced, highly-customizable Minecraft shaderpack based on **Bliss Shader** (originally created by **X0nk**, based on **Chocapic13 Shaders**). 
+<img src="assets/banner.jpg" width="100%" alt="Orizon Shader Preview">
 
-It enhances the visual experience with a focus on majestic atmospheric depth, lifelike volumetric clouds, seamless Distant Horizons / LODs rendering, refined color grading, and comprehensive multi-language support (Full English and Thai).
+## Overview
 
----
+Orizon Shader is a high-fidelity, physically-inspired shading pipeline for Minecraft, engineered upon the architectural foundation of Bliss Shader (authored by X0nk) and Chocapic13 Shaders. 
 
-## ✨ Key Features & Highlights
-
-- 🌄 **Distant Horizons & LODs Optimization**: Built-in support for ultra-distant rendering with fixed vertex LOD decoding, proper depth transitions, and zero artifacting.
-- ☁️ **Dynamic Volumetric Clouds & Sky**: Soft, multi-layered 3D clouds that realistically react to sunlight, moon phases, and daily weather systems.
-- 🌫️ **Atmospheric Fog & Haze**: Physically-inspired Rayleigh and Mie scattering, providing rich sunrise, noon, and sunset color transitions.
-- 💡 **Advanced Lighting & Shadows**: Smooth direct light, subsurface scattering (SSS) for leaves and vegetation, and colored translucent shadows (stained glass).
-- 🌿 **Organic Environment Motion**: Customizable wind swaying for foliage, plants, and water surfaces.
-- 🌐 **Full Dual-Language Support**: Complete native English (`en_us`) and Thai (`th_th`) localization for all in-game shader settings and tooltips.
+The primary objective of Orizon Shader is to deliver a balanced, cinematic visual presentation with particular emphasis on extreme view distances, realistic atmospheric optics, volumetric media simulation, and cross-platform compatibility. It integrates low-level vertex geometry corrections for distant level-of-detail (LOD) systems and provides full dual-language localization (English and Thai) across all configuration menus.
 
 ---
 
-## 📸 Screenshots
+## Technical Architecture and Features
 
-<img src="assets/banner.jpg" width="100%" alt="Orizon Shader Landscape">
+### 1. Distant Horizons and Level-of-Detail (LOD) Integration
+* **Compact Far LOD Decoding**: Implements a dedicated vertex-stage decoding routine for 64-bit compact LOD tiles (`FAR_BASE`), preventing buffer out-of-bounds reads and eliminating planar geometry collapse at extreme distances.
+* **Cull Guard Safety**: Restricts vertex transformations on unassigned or invalid LOD indices across solid, translucent, and shadow passes.
+* **Atmospheric Distance Fog Blending**: Features an extended logarithmic depth blending algorithm that seamlessly merges standard chunk boundaries with Distant Horizons LOD geometry without visible seams or clipping planes.
 
----
+### 2. Atmospheric Simulation and Volumetric Optics
+* **Rayleigh and Mie Scattering**: Employs an analytical atmospheric scattering model that accurately simulates daylight transitions from dawn, midday, golden hour, to astronomical twilight.
+* **Multi-Layered Volumetric Clouds**: Implements ray-marched 3D cloud coverage with dynamic density variation, altitude-dependent shading, and directional sunlight absorption.
+* **Adaptive Horizon Fog**: Dynamic horizon haze density calculation that adjusts based on weather profiles, elevation, biome conditions, and solar elevation.
 
-## 📥 How to Install & Download
+### 3. Lighting, Shadows, and Surface Optics
+* **Distortion-Protected Shadow Projection**: Integrates logarithmic shadow map distortion with near-zero singularity guards to eliminate projection artifacts and geometric tearing along shadow frustum boundaries.
+* **Translucent Colored Shadows**: Full light transmission and tint attenuation through colored glass and translucent barriers.
+* **Subsurface Scattering (SSS)**: Approximates light diffusion through thin materials including foliage, grass, leaves, and organic structures.
+* **Colored Voxel Illumination**: Full compatibility with Iris-based voxel floodfill lighting for emissive blocks and handheld light sources.
 
-### Using with Iris / Sodium (Recommended)
-1. Download this repository as a `.zip` file:
-   - Click the green **Code** button at the top-right of this repository.
-   - Click **Download ZIP**.
-2. Alternatively, grab the latest `.zip` release from the **Releases** section.
-3. Move the downloaded `.zip` file into your Minecraft `.minecraft/shaderpacks/` folder.
-   *(You do **not** need to extract the zip file)*.
-4. Launch Minecraft with **Iris + Sodium** (or OptiFine), go to **Video Settings -> Shader Packs**, and select **Orizon-Shader**.
+### 4. Surface Motion and Environmental Dynamics
+* **Procedural Foliage Swaying**: Wind velocity vector equations applied to plants, canopy leaves, and tall grass with biome-dependent wave speed and amplitude.
+* **Dynamic Water Simulation**: Multi-octave wave generation with physically calculated refraction, specular highlights, and Fresnel-based surface reflectance.
 
-### Recommended Mods for Best Experience:
-- **Iris Shaders**
-- **Sodium**
-- **Distant Horizons** (for grand vista distance rendering)
-
----
-
-## 🙏 Credits & Special Thanks
-
-- **X0nk** — Creator of [Bliss Shader](https://github.com/X0nk/Bliss-Shader) for the outstanding foundation, custom tonemapping, and innovative design.
-- **Chocapic13** — For the original [Chocapic13' Shaders](https://www.curseforge.com/minecraft/customization/chocapic13-shaders) base.
-- **WoMspace** — Depth of Field overhaul.
-- **Null** — Voxel floodfill colored lighting.
-- **EminGT & Gri573** — Light leak prevention techniques.
-- **RRe36 & SixthSurge** — Inspiring shader techniques and concepts.
-- **Arjinkim** — Orizon Shader development, Far LODs pipeline fixes, and complete Thai translation.
+### 5. Multi-Language Localization
+* **Complete Interface Translation**: Fully localized in native English (`en_us`) and Thai (`th_th`), covering all setting screens, parameter sliders, technical explanations, and debug menus.
+* **Standardized Technical Nomenclature**: Clear, professional terminology without encoding corruption or visual clutter in the game UI.
 
 ---
 
-## 📄 License
-This project follows the original licensing and attribution guidelines of Chocapic13 and Bliss Shader. See [LICENSE.md](LICENSE.md) and [CREDITS.txt](CREDITS.txt) for full details.
+## System Requirements and Compatibility
+
+### Graphics Hardware and APIs
+| Specification | Minimum | Recommended |
+|---|---|---|
+| **Graphics API** | OpenGL 4.5+ / Vulkan | OpenGL 4.6 / Vulkan 1.3 |
+| **GPU Vendor** | NVIDIA GeForce / AMD Radeon / Intel Arc | NVIDIA RTX 2060+ / AMD Radeon RX 6600+ |
+| **Video Memory (VRAM)** | 4 GB | 6 GB or higher |
+| **Display Resolution** | 1080p | 1440p / 4K |
+
+### Minecraft Platform Compatibility
+* **Iris Shaders + Sodium** (Minecraft Java Edition): Fully supported and strongly recommended.
+* **Distant Horizons Mod**: Fully supported with native LOD pipeline fixes.
+* **Horizon Engine** (Rust/wgpu rewrite): Compatible via native WGSL profile and manifest specifications.
+* **OptiFine**: Legacy support available for standard rendering features.
+
+---
+
+## Installation Guide
+
+### Standard Installation (Iris Shaders)
+1. Ensure Minecraft is installed with **Fabric** or **NeoForge**, along with **Sodium** and **Iris Shaders**.
+2. If extended view distance is desired, install the **Distant Horizons** mod compatible with your game version.
+3. Download the latest release from the repository:
+   * Navigate to the **Releases** tab on the right side of the repository page and download `Orizon-Shader.zip`.
+   * Alternatively, click the green **Code** button and select **Download ZIP**.
+4. Place the downloaded `.zip` file directly into your game's shaderpacks directory:
+   * Windows: `%APPDATA%\.minecraft\shaderpacks\`
+   * Linux: `~/.minecraft/shaderpacks/`
+   * macOS: `~/Library/Application Support/minecraft/shaderpacks/`
+5. Launch Minecraft, navigate to **Options -> Video Settings -> Shader Packs**, and select **Orizon-Shader**.
+
+---
+
+## Recommended In-Game Settings
+
+To achieve optimal visual balance and performance when using Distant Horizons:
+* **Max Render Distance (Minecraft)**: 12 - 16 Chunks.
+* **Distant Horizons CPU Load**: Balanced or Minimal Impact.
+* **Distant Horizons Max Target Distance**: 64 - 128 Chunks.
+* **Profile Selection (Shader Settings)**:
+  * Select **Quality** for maximum volumetric fidelity and soft shadows.
+  * Select **Performance** for higher frame rates and optimized shadow map resolution.
+
+---
+
+## Repository Structure
+
+```
+Orizon-Shader/
+├── .github/              # Issue and contribution templates
+├── assets/               # Documentation media and banner assets
+├── shaders/              # Core GLSL shading passes and properties
+│   ├── dimensions/       # Deferred, composite, and geometry passes
+│   ├── lang/             # Localization files (en_us, th_th, etc.)
+│   ├── lib/              # Atmospheric, lighting, and mathematical libraries
+│   ├── world-1/          # Nether-specific pipeline passes
+│   ├── world0/           # Overworld-specific pipeline passes
+│   └── world1/           # End-specific pipeline passes
+├── CREDITS.txt           # Detailed upstream attribution
+├── LICENSE.md            # License terms and conditions
+└── README.md             # Project documentation
+```
+
+---
+
+## Credits and Acknowledgements
+
+Orizon Shader builds upon the foundational research and development of the Minecraft shading community:
+
+* **X0nk**: Original author of [Bliss Shader](https://github.com/X0nk/Bliss-Shader), pioneering custom tonemapping, daily weather logic, and atmospheric style.
+* **Chocapic13**: Author of the baseline [Chocapic13' Shaders](https://www.curseforge.com/minecraft/customization/chocapic13-shaders) pipeline.
+* **Sasha (WoMspace)**: Depth of field architecture and camera optics.
+* **Null**: Voxel-based floodfill colored illumination framework.
+* **EminGT & Gri573**: Light-leak mitigation and diffuse lighting enhancements.
+* **SixthSurge & RRe36**: Mathematical models, inspiration, and graphics engineering techniques.
+* **Arjinkim**: Orizon Shader development, Distant Horizons pipeline reconstruction, vertex decoding stabilization, and complete Thai translation.
+
+---
+
+## License
+
+This software is distributed in compliance with the original licensing terms established by Chocapic13 and Bliss Shader. Consult [LICENSE.md](LICENSE.md) and [CREDITS.txt](CREDITS.txt) for explicit terms, limitations, and attribution requirements.
