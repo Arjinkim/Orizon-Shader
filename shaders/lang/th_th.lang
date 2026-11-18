@@ -1,0 +1,739 @@
+profile.SHADER_VERSION_LABEL = Orizon Shader
+profile.OLD_BLISS_TONEMAP = Orizon Shader + v2.0.4 โทนสีเดิม
+
+# if you're here to translate, this is a joke, these don't do what they say
+profile.QUALITY = เน้นภาพสวย (Quality)
+profile.PERFORMANCE = เน้นลื่นไหล (Performance)
+
+screen.Misc_Settings = เมนู§cทดสอบระบบ§r/ทดลอง (Debug)
+screen.Sun_and_Moon_Colors = โทนสีดวงอาทิตย์และจันทร์
+option.sunPathRotation = มุมโคจรดวงอาทิตย์
+option.sun_illuminance = ความสว่างดวงอาทิตย์
+option.moon_illuminance = ความสว่างดวงจันทร์
+option.MOONPHASE_BASED_MOONLIGHT = ความสว่างตามข้างขึ้นข้างแรม
+
+screen.Mod_support = ม็อดที่รองรับ (Mod Support)
+
+option.RESOURCEPACK_SKY = ท้องฟ้าจาก Resource Pack
+    value.RESOURCEPACK_SKY.0 = ปิดใช้งาน (ไม่ใช้)
+    value.RESOURCEPACK_SKY.1 = ท้องฟ้า RP + ดวงดาวของเชดเดอร์
+    value.RESOURCEPACK_SKY.2 = ท้องฟ้าทั้งหมดจาก RP
+    value.RESOURCEPACK_SKY.3 = ท้องฟ้าเชดเดอร์ + ดวงดาวของ RP
+
+screen.Waving_Stuff = วัตถุพริ้วไหวตามลม (Waving)
+    option.WAVY_PLANTS = ต้นไม้ใบหญ้าไหวลม
+    option.WAVY_STRENGTH = แรงสั่นไหวของพืช
+    option.WAVY_SPEED = ความเร็วการไหว
+
+screen.Direct_Light = แสงตรง (Direct Light)
+    screen.Shadows = เงา (Shadows)
+        option.TRANSLUCENT_COLORED_SHADOWS = เงาสีโปร่งแสง (กระจกสี)
+        option.SCREENSPACE_CONTACT_SHADOWS = เงาสัมผัสรอยต่อ (Contact Shadows)
+        option.RENDER_ENTITY_SHADOWS = เงาของม็อบ/วัตถุ (Entities)
+        option.RENDER_PLAYER_SHADOWS = เงาของตัวผู้เล่น
+        option.shadowMapResolution = ความคมชัดของเงา (Resolution)
+        option.shadowDistance = ระยะแสดงผลของเงา
+            value.shadowDistance.32.0 = 2 ชังก์
+            value.shadowDistance.48.0 = 3 ชังก์
+            value.shadowDistance.64.0 = 4 ชังก์
+            value.shadowDistance.80.0 = 5 ชังก์
+            value.shadowDistance.96.0 = 6 ชังก์
+            value.shadowDistance.112.0 = 7 ชังก์
+            value.shadowDistance.128.0 = 8 ชังก์
+            value.shadowDistance.144.0 = 9 ชังก์
+            value.shadowDistance.160.0 = 10 ชังก์
+            value.shadowDistance.176.0 = 11 ชังก์
+            value.shadowDistance.192.0 = 12 ชังก์
+            value.shadowDistance.208.0 = 13 ชังก์
+            value.shadowDistance.224.0 = 14 ชังก์
+            value.shadowDistance.240.0 = 15 ชังก์
+            value.shadowDistance.256.0 = 16 ชังก์
+            value.shadowDistance.272.0 = 17 ชังก์
+            value.shadowDistance.288.0 = 18 ชังก์
+            value.shadowDistance.304.0 = 19 ชังก์
+            value.shadowDistance.320.0 = 20 ชังก์
+            value.shadowDistance.336.0 = 21 ชังก์
+            value.shadowDistance.352.0 = 22 ชังก์
+            value.shadowDistance.368.0 = 23 ชังก์
+            value.shadowDistance.384.0 = 24 ชังก์
+            value.shadowDistance.512.0 = 32 ชังก์
+            value.shadowDistance.768.0 = 48 ชังก์
+            value.shadowDistance.1024.0 = 64 ชังก์
+            value.shadowDistance.1536.0 = 96 ชังก์
+            value.shadowDistance.2048.0 = 128 ชังก์
+            value.shadowDistance.4096.0 = 256 ชังก์
+            value.shadowDistance.8192.0 = 512 ชังก์
+
+        option.OPTIMIZED_SHADOW_DISTANCE = ขอบเขตเรนเดอร์เงา
+            value.OPTIMIZED_SHADOW_DISTANCE.-1.0 = แบบรอบทิศ (Un-Optimized)
+            value.OPTIMIZED_SHADOW_DISTANCE.1.0 = แบบประหยัดสเปก (Optimized)
+        option.entityShadowDistanceMul = ระยะแสดงเงาของเอนทิตี
+            value.entityShadowDistanceMul.0.01 = 1% ของระยะเงา
+            value.entityShadowDistanceMul.0.02 = 2% ของระยะเงา
+            value.entityShadowDistanceMul.0.03 = 3% ของระยะเงา
+            value.entityShadowDistanceMul.0.04 = 4% ของระยะเงา
+            value.entityShadowDistanceMul.0.05 = 5% ของระยะเงา
+            value.entityShadowDistanceMul.0.10 = 10% ของระยะเงา
+            value.entityShadowDistanceMul.0.15 = 15% ของระยะเงา
+            value.entityShadowDistanceMul.0.20 = 20% ของระยะเงา
+            value.entityShadowDistanceMul.0.25 = 25% ของระยะเงา
+            value.entityShadowDistanceMul.0.30 = 30% ของระยะเงา
+            value.entityShadowDistanceMul.0.35 = 35% ของระยะเงา
+            value.entityShadowDistanceMul.0.40 = 40% ของระยะเงา
+            value.entityShadowDistanceMul.0.45 = 45% ของระยะเงา
+            value.entityShadowDistanceMul.0.50 = 50% ของระยะเงา
+            value.entityShadowDistanceMul.0.75 = 75% ของระยะเงา
+            value.entityShadowDistanceMul.1.00 = 100% ของระยะเงา
+
+    screen.Filtering = กรองความนุ่มเงา (Shadow Filter)
+        option.SHADOW_FILTER_SAMPLE_COUNT = จำนวนสุ่มตัวกรองเงา
+        option.Min_Shadow_Filter_Radius = ความนุ่มนวลขั้นต่ำของเงา
+        option.Variable_Penumbra_Shadows = เงามัวแปรผันตามระยะ (VPS)
+        option.VPS_Search_Samples = ความเนียนตัวกรอง VPS
+        option.Max_Shadow_Filter_Radius = ความนุ่มนวลสูงสุดของเงา
+        option.Max_Filter_Depth = ขนาดเสมือนของดวงอาทิตย์
+        
+    screen.LPV = แสงสี FloodFill §c(ต้องใช้ Iris)§r
+        option.LPV_ENABLED = เปิดระบบแสงสี
+        option.LPV_SIZE = ขนาดขอบเขตคำนวณ (Volume)
+            value.LPV_SIZE.6 = เล็ก [64]
+            value.LPV_SIZE.7 = กลาง [128]
+            value.LPV_SIZE.8 = ใหญ่ [256]
+        option.LPV_SATURATION = ความสดของแสงสี
+            suffix.LPV_SATURATION=%
+        option.LPV_TINT_SATURATION = ความเข้มของการย้อมสี
+            suffix.LPV_TINT_SATURATION=%
+        option.LPV_NORMAL_STRENGTH = ความลึกของแสง Normal Map
+            suffix.LPV_NORMAL_STRENGTH = %
+            value.LPV_NORMAL_STRENGTH.0 = ปิด
+        option.LPV_ENTITY_LIGHTS = แสงสีจากสิ่งมีชีวิต
+        option.LPV_REDSTONE_LIGHTS = แสงสีจากเรดสโตน
+        option.LPV_COLORED_CANDLES = แสงสีจากเทียนหลากสี
+        option.LPV_NOSHADOW_HACK = แก้บั๊กสำหรับ Iris <= 1.7.0
+        option.LPV_VL_FOG_ILLUMINATION = แสงสีส่องกระทบหมอก
+        option.LPV_VL_FOG_ILLUMINATION_BRIGHTNESS = ความสว่างหมอกรับแสงสี
+            suffix.LPV_VL_FOG_ILLUMINATION_BRIGHTNESS=%
+
+screen.Subsurface_Scattering = แสงทะลุเนื้อวัตถุ (SSS)
+    option.LabSSS_Curve = กราฟการทะลุแสง LabSSS
+    option.MISC_BLOCK_SSS = แสงทะลุบล็อกหญ้า/ทราย
+    option.MOB_SSS = แสงทะลุตัวม็อบและผู้เล่น
+    option.Ambient_SSS = แสงทะลุจากแสงท้องฟ้า
+    option.ambientsss_brightness = ความสว่างแสงทะลุจากฟ้า
+    option.SSS_TYPE = รูปแบบ SSS
+        value.SSS_TYPE.0 = ปิด (None)
+        value.SSS_TYPE.1 = เชดเดอร์กำหนดเอง
+        value.SSS_TYPE.2 = เชดเดอร์ + LabSSS
+        value.SSS_TYPE.3 = LabSSS เท่านั้น
+
+
+screen.Ambient_light = แสงรอบข้าง (Ambient Light)
+    option.AO_Strength = ความเข้มเงาตามซอกมุม (AO)
+    option.GI_Strength = ความเข้มแสงสะท้อนเด้ง (GI)
+    option.HQ_SSGI = แสงสะท้อนเด้งระยะไกล (SSRT)
+    option.UseQuarterResDepth = สุ่มความลึกแบบลดสเปก (SSRT)
+    option.Hand_Held_lights = แสงสว่างจากไอเทมในมือ
+    option.SKY_CONTRIBUTION_IN_SSRT = แสงแวดล้อมสมจริง (SSRT)
+    option.ambientOcclusionLevel = เงา AO แบบเดิมของเกม
+    option.ambient_brightness = ความสว่างในที่ร่ม
+    option.MIN_LIGHT_AMOUNT = ความสว่างขั้นต่ำในเงามืด
+    option.indirect_effect = ระบบเงาและแสงทางอ้อม
+        value.indirect_effect.0 = แบบเดิมของเกม (Vanilla AO)
+            value.indirect_effect.1 = SSAO (มาตรฐาน)
+            value.indirect_effect.2 = GTAO (แม่นยำสูง)
+            value.indirect_effect.3 = SSRT (เฉพาะ AO) - §cภาพมีจุดรบกวน§r
+            value.indirect_effect.4 = SSRT (AO + GI) - §cภาพมีจุดรบกวน§r
+
+    screen.Ambient_Colors = โทนสีแสงรอบข้าง
+        option.AmbientLight_R = ปริมาณสีแดง
+        option.AmbientLight_G = ปริมาณสีเขียว
+        option.AmbientLight_B = ปริมาณสีน้ำเงิน
+        option.ambient_colortype = รูปแบบการเลือกสี
+            value.ambient_colortype.0 = อุณหภูมิสี (Kelvin)
+            value.ambient_colortype.1 = โหมดสี RGB
+    
+    screen.Torch_Colors = โทนสีแสงคบเพลิง
+        option.TORCH_AMOUNT = ตัวคูณความสว่างคบเพลิง
+        option.TORCH_R = ปริมาณสีแดง
+        option.TORCH_G = ปริมาณสีเขียว
+        option.TORCH_B = ปริมาณสีน้ำเงิน
+    
+
+screen.Fog = หมอก (Fog)
+    option.VL_RENDER_RESOLUTION = ความละเอียดเรนเดอร์หมอก
+    option.VL_SAMPLES = ความเนียนของหมอก (Samples)
+    option.BLOOMY_FOG = ความฟุ้งละมุนของหมอก
+    option.Haze_amount = ความหนาแน่นไอหมอกฟ้า
+    option.RainFog_amount = ความหนาของหมอกตอนฝนตก
+    option.RAYMARCH_CLOUDS_WITH_FOG = เรนเดอร์เมฆเป็นหมอก §c(โหมดทดลอง)§r
+    option.BorderFog = หมอกบดบังขอบชังก์โหลด
+
+    screen.TOD_fog = หมอกตามช่วงเวลา (TOD Fog)
+        option.TOD_Fog_mult = ตัวคูณหมอกรวมทุกช่วงเวลา
+        option.Morning_Uniform_Fog = หมอกช่วงเช้า
+        option.Noon_Uniform_Fog = หมอกช่วงเที่ยง
+        option.Evening_Uniform_Fog = หมอกช่วงเย็น
+        option.Night_Uniform_Fog = หมอกช่วงค่ำคืน
+        option.Morning_Cloudy_Fog = หมอกช่วงเช้า (วันมีเมฆ)
+        option.Noon_Cloudy_Fog = หมอกช่วงเที่ยง (วันมีเมฆ)
+        option.Evening_Cloudy_Fog = หมอกช่วงเย็น (วันมีเมฆ)
+        option.Night_Cloudy_Fog = หมอกช่วงค่ำคืน (วันมีเมฆ)
+
+        option.PER_BIOME_ENVIRONMENT = บรรยากาศเฉพาะไบโอม
+
+    screen.Cave_Fog = หมอกในถ้ำ (Cave Fog)
+        option.Cave_Fog = เปิดหมอกในถ้ำ
+        option.CaveFogFallOff = ระยะการจางของหมอกถ้ำ
+        option.CaveFogColor_R = สีหมอก แดง (R)
+        option.CaveFogColor_G = สีหมอก เขียว (G)
+        option.CaveFogColor_B = สีหมอก น้ำเงิน (B)
+
+    screen.END_AND_NETHER_FOG = หมอกมิติ Nether/End
+        option.END_STORM_DENSTIY = ความหนาพายุใน The End
+        option.NETHER_PLUME_DENSITY = ความหนาลำควันใน Nether
+
+screen.Clouds = เมฆ 3D (Clouds)
+    option.VOLUMETRIC_CLOUDS = เปิดเมฆ 3D (Volumetric Clouds)
+    option.CLOUDS_QUALITY = ความเนียนของเมฆ (Quality)
+    option.CLOUDS_SHADOWS = เงาของก้อนเมฆทอดลงพื้น
+    option.Cloud_Speed = ความเร็วลมพัดเมฆ
+    option.Rain_coverage = ความหนาแน่นเมฆตอนฝนตก
+    option.Daily_Weather = ระบบสภาพอากาศเปลี่ยนรายวัน
+
+    option.CloudLayer0 = เมฆก้อนเล็ก ระดับล่าง (Layer 0)
+    option.CloudLayer0_coverage = พื้นที่ปกคลุม
+    option.CloudLayer0_density = ความหนาแน่น
+    option.CloudLayer0_height = ระดับความสูง
+
+    option.CloudLayer1 = เมฆก้อนใหญ่ ระดับกลาง (Layer 1)
+    option.CloudLayer1_coverage = พื้นที่ปกคลุม
+    option.CloudLayer1_density = ความหนาแน่น
+    option.CloudLayer1_height = ระดับความสูง
+
+    option.CloudLayer2 = เมฆแผ่นบาง ระดับสูง (Layer 2)
+    option.CloudLayer2_coverage = พื้นที่ปกคลุม
+    option.CloudLayer2_density = ความหนาแน่น
+    option.CloudLayer2_height = ระดับความสูง
+
+screen.DAILY_WEATHER = สภาพอากาศรายวัน (Daily Weather)
+option.CHOOSE_RANDOM_WEATHER_PROFILE = สุ่มสภาพอากาศในแต่ละวัน
+    screen.DAY0_WEATHER = สภาพอากาศ วันที่ 0
+        option.DAY0_l0_coverage = พื้นที่ปกคลุม (เมฆก้อนเล็ก)
+        option.DAY0_l0_density = ความหนาแน่น (เมฆก้อนเล็ก)
+        option.DAY0_l1_coverage = พื้นที่ปกคลุม (เมฆก้อนใหญ่)
+        option.DAY0_l1_density = ความหนาแน่น (เมฆก้อนใหญ่)
+        option.DAY0_l2_coverage = พื้นที่ปกคลุม (เมฆแผ่นบาง)
+        option.DAY0_l2_density = ความหนาแน่น (เมฆแผ่นบาง)
+        option.DAY0_ufog_density = ความหนาแน่น (หมอกปกติ)
+        option.DAY0_cfog_density = ความหนาแน่น (หมอกวันมีเมฆ)
+        
+    screen.DAY1_WEATHER = สภาพอากาศ วันที่ 1
+        option.DAY1_l0_coverage = พื้นที่ปกคลุม (เมฆก้อนเล็ก)
+        option.DAY1_l0_density = ความหนาแน่น (เมฆก้อนเล็ก)
+        option.DAY1_l1_coverage = พื้นที่ปกคลุม (เมฆก้อนใหญ่)
+        option.DAY1_l1_density = ความหนาแน่น (เมฆก้อนใหญ่)
+        option.DAY1_l2_coverage = พื้นที่ปกคลุม (เมฆแผ่นบาง)
+        option.DAY1_l2_density = ความหนาแน่น (เมฆแผ่นบาง)
+        option.DAY1_ufog_density = ความหนาแน่น (หมอกปกติ)
+        option.DAY1_cfog_density = ความหนาแน่น (หมอกวันมีเมฆ)
+        
+    screen.DAY2_WEATHER = สภาพอากาศ วันที่ 2
+        option.DAY2_l0_coverage = พื้นที่ปกคลุม (เมฆก้อนเล็ก)
+        option.DAY2_l0_density = ความหนาแน่น (เมฆก้อนเล็ก)
+        option.DAY2_l1_coverage = พื้นที่ปกคลุม (เมฆก้อนใหญ่)
+        option.DAY2_l1_density = ความหนาแน่น (เมฆก้อนใหญ่)
+        option.DAY2_l2_coverage = พื้นที่ปกคลุม (เมฆแผ่นบาง)
+        option.DAY2_l2_density = ความหนาแน่น (เมฆแผ่นบาง)
+        option.DAY2_ufog_density = ความหนาแน่น (หมอกปกติ)
+        option.DAY2_cfog_density = ความหนาแน่น (หมอกวันมีเมฆ)
+
+    screen.DAY3_WEATHER = สภาพอากาศ วันที่ 3
+        option.DAY3_l0_coverage = พื้นที่ปกคลุม (เมฆก้อนเล็ก)
+        option.DAY3_l0_density = ความหนาแน่น (เมฆก้อนเล็ก)
+        option.DAY3_l1_coverage = พื้นที่ปกคลุม (เมฆก้อนใหญ่)
+        option.DAY3_l1_density = ความหนาแน่น (เมฆก้อนใหญ่)
+        option.DAY3_l2_coverage = พื้นที่ปกคลุม (เมฆแผ่นบาง)
+        option.DAY3_l2_density = ความหนาแน่น (เมฆแผ่นบาง)
+        option.DAY3_ufog_density = ความหนาแน่น (หมอกปกติ)
+        option.DAY3_cfog_density = ความหนาแน่น (หมอกวันมีเมฆ)
+
+    screen.DAY4_WEATHER = สภาพอากาศ วันที่ 4
+        option.DAY4_l0_coverage = พื้นที่ปกคลุม (เมฆก้อนเล็ก)
+        option.DAY4_l0_density = ความหนาแน่น (เมฆก้อนเล็ก)
+        option.DAY4_l1_coverage = พื้นที่ปกคลุม (เมฆก้อนใหญ่)
+        option.DAY4_l1_density = ความหนาแน่น (เมฆก้อนใหญ่)
+        option.DAY4_l2_coverage = พื้นที่ปกคลุม (เมฆแผ่นบาง)
+        option.DAY4_l2_density = ความหนาแน่น (เมฆแผ่นบาง)
+        option.DAY4_ufog_density = ความหนาแน่น (หมอกปกติ)
+        option.DAY4_cfog_density = ความหนาแน่น (หมอกวันมีเมฆ)
+
+    screen.DAY5_WEATHER = สภาพอากาศ วันที่ 5
+        option.DAY5_l0_coverage = พื้นที่ปกคลุม (เมฆก้อนเล็ก)
+        option.DAY5_l0_density = ความหนาแน่น (เมฆก้อนเล็ก)
+        option.DAY5_l1_coverage = พื้นที่ปกคลุม (เมฆก้อนใหญ่)
+        option.DAY5_l1_density = ความหนาแน่น (เมฆก้อนใหญ่)
+        option.DAY5_l2_coverage = พื้นที่ปกคลุม (เมฆแผ่นบาง)
+        option.DAY5_l2_density = ความหนาแน่น (เมฆแผ่นบาง)
+        option.DAY5_ufog_density = ความหนาแน่น (หมอกปกติ)
+        option.DAY5_cfog_density = ความหนาแน่น (หมอกวันมีเมฆ)
+
+    screen.DAY6_WEATHER = สภาพอากาศ วันที่ 6
+        option.DAY6_l0_coverage = พื้นที่ปกคลุม (เมฆก้อนเล็ก)
+        option.DAY6_l0_density = ความหนาแน่น (เมฆก้อนเล็ก)
+        option.DAY6_l1_coverage = พื้นที่ปกคลุม (เมฆก้อนใหญ่)
+        option.DAY6_l1_density = ความหนาแน่น (เมฆก้อนใหญ่)
+        option.DAY6_l2_coverage = พื้นที่ปกคลุม (เมฆแผ่นบาง)
+        option.DAY6_l2_density = ความหนาแน่น (เมฆแผ่นบาง)
+        option.DAY6_ufog_density = ความหนาแน่น (หมอกปกติ)
+        option.DAY6_cfog_density = ความหนาแน่น (หมอกวันมีเมฆ)
+
+    screen.DAY7_WEATHER = สภาพอากาศ วันที่ 7
+        option.DAY7_l0_coverage = พื้นที่ปกคลุม (เมฆก้อนเล็ก)
+        option.DAY7_l0_density = ความหนาแน่น (เมฆก้อนเล็ก)
+        option.DAY7_l1_coverage = พื้นที่ปกคลุม (เมฆก้อนใหญ่)
+        option.DAY7_l1_density = ความหนาแน่น (เมฆก้อนใหญ่)
+        option.DAY7_l2_coverage = พื้นที่ปกคลุม (เมฆแผ่นบาง)
+        option.DAY7_l2_density = ความหนาแน่น (เมฆแผ่นบาง)
+        option.DAY7_ufog_density = ความหนาแน่น (หมอกปกติ)
+        option.DAY7_cfog_density = ความหนาแน่น (หมอกวันมีเมฆ)
+
+    screen.DAY8_WEATHER = สภาพอากาศ วันที่ 8
+        option.DAY8_l0_coverage = พื้นที่ปกคลุม (เมฆก้อนเล็ก)
+        option.DAY8_l0_density = ความหนาแน่น (เมฆก้อนเล็ก)
+        option.DAY8_l1_coverage = พื้นที่ปกคลุม (เมฆก้อนใหญ่)
+        option.DAY8_l1_density = ความหนาแน่น (เมฆก้อนใหญ่)
+        option.DAY8_l2_coverage = พื้นที่ปกคลุม (เมฆแผ่นบาง)
+        option.DAY8_l2_density = ความหนาแน่น (เมฆแผ่นบาง)
+        option.DAY8_ufog_density = ความหนาแน่น (หมอกปกติ)
+        option.DAY8_cfog_density = ความหนาแน่น (หมอกวันมีเมฆ)
+
+    screen.DAY9_WEATHER = สภาพอากาศ วันที่ 9
+        option.DAY9_l0_coverage = พื้นที่ปกคลุม (เมฆก้อนเล็ก)
+        option.DAY9_l0_density = ความหนาแน่น (เมฆก้อนเล็ก)
+        option.DAY9_l1_coverage = พื้นที่ปกคลุม (เมฆก้อนใหญ่)
+        option.DAY9_l1_density = ความหนาแน่น (เมฆก้อนใหญ่)
+        option.DAY9_l2_coverage = พื้นที่ปกคลุม (เมฆแผ่นบาง)
+        option.DAY9_l2_density = ความหนาแน่น (เมฆแผ่นบาง)
+        option.DAY9_ufog_density = ความหนาแน่น (หมอกปกติ)
+        option.DAY9_cfog_density = ความหนาแน่น (หมอกวันมีเมฆ)
+        
+
+screen.Climate = สภาพอากาศ (Climate)
+    option.Seasons = ระบบหมุนเวียน 4 ฤดู
+    option.Season_Length = ระยะเวลาต่อฤดู (จำนวนวัน)
+	option.Start_Season = ฤดูกาลเริ่มต้น
+		value.Start_Season.0 = ฤดูร้อน (ค่าเริ่มต้น)
+		value.Start_Season.1 = ฤดูใบไม้ร่วง
+		value.Start_Season.2 = ฤดูหนาว
+		value.Start_Season.3 = ฤดูใบไม้ผลิ
+    option.Snowy_Winter = มีหิมะตกในฤดูหนาว
+    screen.Summer_colors = โทนสีฤดูร้อน
+        option.Summer_R = ปริมาณสีแดง
+        option.Summer_G = ปริมาณสีเขียว
+        option.Summer_B = ปริมาณสีน้ำเงิน
+        option.Summer_Leaf_R = สีแดงบนใบไม้
+        option.Summer_Leaf_G = สีเขียวบนใบไม้
+        option.Summer_Leaf_B = สีน้ำเงินบนใบไม้
+
+    screen.Fall_colors = โทนสีฤดูใบไม้ร่วง
+        option.Fall_R = ปริมาณสีแดง
+        option.Fall_G = ปริมาณสีเขียว
+        option.Fall_B = ปริมาณสีน้ำเงิน
+        option.Fall_Leaf_R = สีแดงบนใบไม้
+        option.Fall_Leaf_G = สีเขียวบนใบไม้
+        option.Fall_Leaf_B = สีน้ำเงินบนใบไม้
+
+    screen.Winter_colors = โทนสีฤดูหนาว
+        option.Winter_R = ปริมาณสีแดง
+        option.Winter_G = ปริมาณสีเขียว
+        option.Winter_B = ปริมาณสีน้ำเงิน
+        option.Winter_Leaf_R = สีแดงบนใบไม้
+        option.Winter_Leaf_G = สีเขียวบนใบไม้
+        option.Winter_Leaf_B = สีน้ำเงินบนใบไม้
+
+    screen.Spring_colors = โทนสีฤดูใบไม้ผลิ
+        option.Spring_R = ปริมาณสีแดง
+        option.Spring_G = ปริมาณสีเขียว
+        option.Spring_B = ปริมาณสีน้ำเงิน
+        option.Spring_Leaf_R = สีแดงบนใบไม้
+        option.Spring_Leaf_G = สีเขียวบนใบไม้
+        option.Spring_Leaf_B = สีน้ำเงินบนใบไม้
+        
+    screen.SWAMP = บึง (Swamp)
+        option.SWAMP_ENV = บรรยากาศเฉพาะบึง
+        option.SWAMP_UNIFORM_DENSITY = หมอกปกติ
+        option.SWAMP_CLOUDY_DENSITY = หมอกวันมีเมฆ
+        option.SWAMP_R = ปริมาณสีแดง
+        option.SWAMP_G = ปริมาณสีเขียว
+        option.SWAMP_B = ปริมาณสีน้ำเงิน
+
+    screen.JUNGLE = ป่าดงดิบ (Jungle)
+        option.JUNGLE_ENV = บรรยากาศเฉพาะป่าดงดิบ
+        option.JUNGLE_UNIFORM_DENSITY = หมอกปกติ
+        option.JUNGLE_CLOUDY_DENSITY = หมอกวันมีเมฆ
+        option.JUNGLE_R = ปริมาณสีแดง
+        option.JUNGLE_G = ปริมาณสีเขียว
+        option.JUNGLE_B = ปริมาณสีน้ำเงิน
+
+    screen.DARKFOREST = ป่าทึบ (Dark Forest)
+        option.DARKFOREST_ENV = บรรยากาศเฉพาะป่าทึบ
+        option.DARKFOREST_UNIFORM_DENSITY = หมอกปกติ
+        option.DARKFOREST_CLOUDY_DENSITY = หมอกวันมีเมฆ
+        option.DARKFOREST_R = ปริมาณสีแดง
+        option.DARKFOREST_G = ปริมาณสีเขียว
+        option.DARKFOREST_B = ปริมาณสีน้ำเงิน
+
+screen.World = โลก (World)
+    screen.Water = ระบบน้ำ (Water)
+        option.WATER_REFLECTIONS = เปิดแสงสะท้อนผิวน้ำ
+        option.SCREENSPACE_REFLECTIONS = สะท้อนภาพรอบตัวบนผิวน้ำ (SSR)
+        option.SSR_STEPS = ความละเอียดเงาสะท้อนน้ำ
+        option.WATER_SUN_SPECULAR = สะท้อนดวงอาทิตย์/จันทร์
+        option.WATER_BACKGROUND_SPECULAR = สะท้อนท้องฟ้าและหมอก
+        option.Refraction = การหักเหแสงในน้ำ/กระจก
+        option.Dirt_Amount = ความขุ่นตะกอนของน้ำ
+        option.Water_Top_Layer = พิกัดแกน Y ผิวน้ำทะเล
+        option.WATER_WAVE_STRENGTH = ความแรงของลูกคลื่นน้ำ
+        option.SNELLS_WINDOW = วงกลมสะท้อนใต้น้ำ (Snell's Window)
+        
+        screen.Water_fog_color = โทนสีหมอกใต้น้ำ
+            option.Dirt_Scatter_R = การกระจายแสงแดง (ตะกอน)
+            option.Dirt_Scatter_G = การกระจายแสงเขียว (ตะกอน)
+            option.Dirt_Scatter_B = การกระจายแสงน้ำเงิน (ตะกอน)
+            option.Dirt_Absorb_R = การดูดแสงแดง (ตะกอน)
+            option.Dirt_Absorb_G = การดูดแสงเขียว (ตะกอน)
+            option.Dirt_Absorb_B = การดูดแสงน้ำเงิน (ตะกอน)
+            option.Water_Absorb_R = การดูดแสงแดง (น้ำ)
+            option.Water_Absorb_G = การดูดแสงเขียว (น้ำ)
+            option.Water_Absorb_B = การดูดแสงน้ำเงิน (น้ำ)
+
+
+screen.Post_Processing = ปรับแต่งภาพ (Post Processing)
+    screen.Tonemapping = โทนภาพและสี (Tone-Map)
+    screen.Exposure = ความสว่างแสง (Exposure)
+    screen.DepthOfField = ระยะชัดลึก (Depth Of Field)
+    screen.Purkinje_effect = ปรับสายตากลางคืน (Purkinje)
+    option.SHARPENING = ความคมชัดของภาพ (Sharpening)
+    option.BLOOM_STRENGTH = ความฟุ้งกระจายของแสง (Bloom)
+    screen.TAA_OPTIONS = ลดรอยหยักภาพ (Anti-Aliasing)
+        option.SCREENSHOT_MODE = โหมดถ่ายภาพสวยเนียน (Screenshot)
+        option.TAA = ลดรอยหยักแบบ TAA
+        option.BLEND_FACTOR = สัดส่วนผสมเฟรมเก่า (Blend Factor)
+        option.TAA_UPSCALING = อัปสเกลภาพแบบ TAA (เพิ่มความลื่น)
+        option.SCALE_FACTOR = สเกลความละเอียดก่อนอัปสเกล
+	screen.COLOR_GRADING = เกรดสีภาพ (Color Grading)
+		option.LUMINANCE_CURVE = เส้นโค้งความสว่าง (Tone Curve)
+		option.LOWER_CURVE = เส้นโค้งโทนภาพส่วนมืด
+		option.UPPER_CURVE = เส้นโค้งโทนภาพส่วนสว่าง
+		option.COLOR_GRADING_ENABLED = เปิดใช้งานเกรดสีภาพ
+		option.SHADOWS_GRADE_R = ส่วนมืด (Shadows) §cสีแดง
+		option.SHADOWS_GRADE_G = ส่วนมืด (Shadows) §aสีเขียว
+		option.SHADOWS_GRADE_B = ส่วนมืด (Shadows) §9สีน้ำเงิน
+		option.SHADOWS_GRADE_MUL = ความสว่างส่วนมืด
+		option.MIDS_GRADE_R = โทนกลาง (Midtones) §cสีแดง
+		option.MIDS_GRADE_G = โทนกลาง (Midtones) §aสีเขียว
+		option.MIDS_GRADE_B = โทนกลาง (Midtones) §9สีน้ำเงิน
+		option.MIDS_GRADE_MUL = ความสว่างโทนกลาง
+		option.HIGHLIGHTS_GRADE_R = ส่วนสว่าง (Highlights) §cสีแดง
+		option.HIGHLIGHTS_GRADE_G = ส่วนสว่าง (Highlights) §aสีเขียว
+		option.HIGHLIGHTS_GRADE_B = ส่วนสว่าง (Highlights) §9สีน้ำเงิน
+		option.HIGHLIGHTS_GRADE_MUL = ความสว่างส่วนสว่าง
+
+
+screen.Resource_Pack_Support = ระบบ Resource Pack
+    screen.Reflections = แสงสะท้อนผิวมัน (Reflections)
+        option.Specular_Reflections = เปิดแสงสะท้อนผิวมัน (Specular)
+        option.Screen_Space_Reflections = สะท้อนภาพรอบตัว (Screen-Space)
+        option.Rough_reflections = ความขรุขระสมจริง (Roughness)
+        option.Sky_reflection = สะท้อนท้องฟ้าและหมอก
+        option.Dynamic_SSR_quality = ปรับคุณภาพ SSR อัตโนมัติ
+        option.Roughness_Threshold = เพดานความขรุขระของพื้นผิว
+        option.Sun_specular_Strength = ความจ้าแสงสะท้อนดวงอาทิตย์
+        option.reflection_quality = ระดับคุณภาพของ SSR
+
+    screen.Emissives = แสงเรือง (Emissives)
+        option.Emissive_Brightness = ความสว่างของแสงเรือง
+        option.Emissive_Curve = กราฟความเร่งแสงเรือง
+        option.EMISSIVE_TYPE = โหมดแสงเรือง
+            value.EMISSIVE_TYPE.0 = ปิด (ไม่มีแสงเรือง)
+            value.EMISSIVE_TYPE.1 = เชดเดอร์กำหนดเอง
+            value.EMISSIVE_TYPE.2 = เชดเดอร์ + Lab Emission
+            value.EMISSIVE_TYPE.3 = Lab Emission เท่านั้น
+
+
+screen.POM = พื้นผิวนูน 3D (POM)
+    option.POM = พื้นผิวนูนมีมิติ 3D (POM)
+    option.MAX_ITERATIONS = ความเนียนมิตินูน (Iterations)
+    option.POM_DEPTH = ความลึกของมิติรอยนูน
+    option.MAX_DIST = ระยะแสดงผลสูงสุด
+    option.Adaptive_Step_length = ปรับความเนียนอัตโนมัติ
+    option.Horrible_slope_normals = Normal ขอบพื้นเอียง (Slope)
+
+
+screen.Porosity = แอ่งน้ำขังยามฝน (Puddles)
+    option.Porosity = การซึมซับน้ำของพื้นผิว (Porosity)
+    option.Puddles = แอ่งน้ำขังยามฝนตก (Puddles)
+    option.Puddle_Size = ขนาดของแอ่งน้ำขัง
+
+option.MATERIAL_AO = เงาซอกมุมจาก Resource Pack
+
+option.DOF_QUALITY = ระยะชัดลึก หน้าชัดหลังเบลอ (DOF)
+    value.DOF_QUALITY.-1 = ปิด
+    value.DOF_QUALITY.0 = โบเก้หกเหลี่ยม (Hexagonal)
+    value.DOF_QUALITY.1 = ต่ำ
+    value.DOF_QUALITY.2 = ปานกลาง
+    value.DOF_QUALITY.3 = สูง
+    value.DOF_QUALITY.4 = สูงสุด (Ultra)
+    value.DOF_QUALITY.5 = สุ่มกระจาย (Jitter)
+	option.MANUAL_FOCUS = ระยะโฟกัสภาพ
+    option.DOF_ANAMORPHIC_RATIO = อัตราส่วนโบเก้อนามอร์ฟิก
+    value.MANUAL_FOCUS.-2 = โฟกัสอัตโนมัติ (Autofocus)
+	value.MANUAL_FOCUS.-1 = ปรับตามแถบความสว่างในเกม
+
+	screen.JITTER_DOF = เอฟเฟกต์ Jitter DOF
+		option.JITTER_STRENGTH = ความแรงของ Jitter
+		option.FOCUS_LASER_COLOR = สีเลเซอร์ช่วยเล็งโฟกัส
+		value.FOCUS_LASER_COLOR.0 = สีแดง
+		value.FOCUS_LASER_COLOR.1 = สีเขียว
+		value.FOCUS_LASER_COLOR.2 = สีน้ำเงิน
+		value.FOCUS_LASER_COLOR.3 = สีชมพู
+		value.FOCUS_LASER_COLOR.4 = สีเหลือง
+		value.FOCUS_LASER_COLOR.5 = สีขาว
+
+option.AEROCHROME_MODE = โหมดฟิล์มอินฟราเรด (Aerochrome)
+option.AEROCHROME_PINKNESS = อัตราส่วน แดง:ชมพู
+option.AEROCHROME_WOOL_ENABLED = บล็อกขนแกะ Aerochrome
+
+option.AEROCHROME_MODE.comment = จำลองภาพถ่ายฟิล์มอินฟราเรด โทนสีธรรมชาติจะเปลี่ยนเป็นสีแดงอมชมพู
+option.AEROCHROME_PINKNESS.comment = ปรับสัดส่วนโทนสี: ค่าสูง = สีชมพู, ค่าต่ำ = สีแดง
+option.AEROCHROME_WOOL_ENABLED.comment = เปิดให้บล็อกขนสัตว์เปลี่ยนสีตามเอฟเฟกต์ฟิล์มอินฟราเรดด้วย
+
+
+
+
+
+screen.Misc_Settings.comment = เมนูเครื่องมือสำหรับตรวจสอบระบบและตัวเลือกระดับทดลอง
+screen.Sun_and_Moon_Colors.comment = ปรับแต่งโทนสีของดวงอาทิตย์และดวงจันทร์
+option.sunPathRotation.comment = ปรับมุมองศาการโคจรของดวงอาทิตย์และดวงจันทร์บนท้องฟ้า
+option.sun_illuminance.comment = ปรับระดับความสว่างของแสงอาทิตย์
+option.moon_illuminance.comment = ปรับระดับความสว่างของแสงจันทร์
+
+screen.Direct_Light.comment = เมนูปรับแต่งแสงอาทิตย์ แสงจันทร์ และระบบเงา
+
+screen.Shadows.comment = ปรับแต่งระบบเงาทอดจากแสงอาทิตย์
+    option.SCREENSPACE_CONTACT_SHADOWS.comment = §bคืออะไร?§r เงารายละเอียดเล็กๆ ระยะใกล้ และเงาวัตถุระยะไกล §aกินสเปก:§r ต่ำถึงปานกลาง
+    option.RENDER_ENTITY_SHADOWS.comment = §bคืออะไร?§r เงาของสิ่งมีชีวิต กล่อง ป้าย และสิ่งของต่างๆ §aกินสเปก:§r ต่ำถึงสูง (จะกินสเปกมากหากมีม็อบเยอะ)
+    option.shadowMapResolution.comment = ความคมชัดของเงาแดด §aกินสเปก:§r ปานกลางถึงสูงมาก (เงาต้องเรนเดอร์ภาพซ้ำอีกรอบ อาจลดเฟรมเรตลงได้เกือบครึ่ง)
+    option.shadowDistance.comment = ระยะทางสูงสุดที่เงาจะทอดถึง §aกินสเปก:§r ปานกลางถึงสูงมาก
+    option.OPTIMIZED_SHADOW_DISTANCE.comment = จำกัดการเรนเดอร์เงาเฉพาะทรงกลมรอบตัวผู้เล่น §aกินสเปก:§r แบบ Optimized ช่วยให้เล่นได้ลื่นขึ้นมาก
+    screen.Filtering.comment = ปรับแต่งความนุ่มนวลและตัวกรองขอบเงา
+        option.SHADOW_FILTER_SAMPLE_COUNT.comment = จำนวนสุ่มตัวกรองเพื่อเกลี่ยขอบเงาให้นุ่มนวล §aกินสเปก:§r ต่ำถึงปานกลาง
+        option.Min_Shadow_Filter_Radius.comment = ความนุ่มนวลต่ำสุดของขอบเงา
+        option.Variable_Penumbra_Shadows.comment = เงามัวแปรผัน: ยิ่งเงาทอดห่างจากวัตถุ เงาจะยิ่งเบลอนุ่มนวลสมจริง §aกินสเปก:§r ต่ำถึงสูง
+        option.VPS_Search_Samples.comment = ความเนียนของตัวกรองเงามัวแปรผัน (VPS) §aกินสเปก:§r ต่ำถึงสูง
+        option.Max_Shadow_Filter_Radius.comment = ความนุ่มนวลสูงสุดที่เงาสามารถเบลอออกได้
+        option.Max_Filter_Depth.comment = ขนาดเสมือนของดวงอาทิตย์ ยิ่งดวงใหญ่ เงามัวจะเริ่มตั้งแต่ระยะใกล้ตัววัตถุ
+
+screen.Ambient_light.comment = ปรับแต่งความสว่างและแสงเงาในพื้นที่ร่มและเงามืด
+    option.AO_Strength.comment = ความเข้มของเงาตามซอกมุม (AO) §bคืออะไร?§r เงามืดนวลๆ ตามรอยต่อขอบบล็อก
+    option.GI_Strength.comment = ความเข้มแสงสะท้อนเด้ง (GI) §bคืออะไร?§r แสงที่ส่องกระทบพื้นแล้วสะท้อนไปโดนผนังข้างๆ
+    option.HQ_SSGI.comment = เปิดคำนวณแสงสะท้อนเด้งระยะไกล (Long-Range SSGI) §aกินสเปก:§r สูงมาก
+    option.Hand_Held_lights.comment = เปิดแสงสว่างจากไอเทมที่ถือในมือ §aกินสเปก:§r ต่ำมาก
+    option.SKY_CONTRIBUTION_IN_SSRT.comment = นำแสงจากท้องฟ้าและหมอกมาช่วยเกลี่ยแสงเงามืดให้สมจริง §aกินสเปก:§r ปานกลาง
+
+    option.ambientOcclusionLevel.comment = ปรับความเข้มเงาซอกมุมแบบดั้งเดิมของเกมมายคราฟต์
+    option.ambient_brightness.comment = ปรับความสว่างโดยรวมในพื้นที่ร่มเงา
+    option.MIN_LIGHT_AMOUNT.comment = ระดับความสว่างขั้นต่ำสุดในที่มืดสนิท
+    option.indirect_effect.comment = เลือกระบบแสงเงาในที่ร่ม §aกินสเปก:§r Vanilla AO: ต่ำมาก, SSAO: ต่ำ-กลาง, GTAO: กลาง-สูง, SSRT: สูงมาก
+
+    screen.Ambient_Colors.comment = ปรับแต่งเฉดสีแสงในบริเวณร่มเงา
+    screen.Torch_Colors.comment = ปรับแต่งเฉดสีแสงจากคบเพลิงและบล็อกส่องสว่าง
+
+    option.LPV_SIZE.comment = ขนาดขอบเขตบล็อกสำหรับการคำนวณแสงสี
+    option.LPV_SATURATION.comment = ปรับความสดเข้มของแสงสี
+    option.LPV_TINT_SATURATION.comment = ความเข้มการย้อมสีเมื่อแสงส่องทะลุกระจกสี
+    option.LPV_NORMAL_STRENGTH.comment = ผลกระทบของแนวระนาบผิวบล็อกต่อทิศทางแสง
+    option.LPV_ENTITY_LIGHTS.comment = เปิดให้ม็อบและผู้เล่นสามารถเปล่งแสงสีได้
+    option.LPV_REDSTONE_LIGHTS.comment = เปิดให้อุปกรณ์เรดสโตนเปล่งแสงสีแดง
+    option.LPV_COLORED_CANDLES.comment = เปิดให้เทียนสีเปล่งแสงตามสีของแท่งเทียน
+    option.LPV_NOSHADOW_HACK.comment = แก้บั๊กสำหรับ Iris 1.7.0 ลงไป เพื่อให้แสงสีทำงานใน Nether และ End ได้
+    option.LPV_VL_FOG_ILLUMINATION.comment = ให้แสงสีย้อมหมอกและอากาศรอบตัวบล็อก
+    option.LPV_VL_FOG_ILLUMINATION_BRIGHTNESS.comment = ปรับความสว่างของหมอกที่ถูกแสงสีย้อม
+    
+screen.Resource_Pack_Support.comment = ฟีเจอร์ที่ดึงข้อมูลพื้นผิวพิเศษจาก Resource Pack มาใช้งาน
+    screen.Reflections.comment = ปรับแต่งแสงสะท้อนที่ใช้ข้อมูลจาก LabPBR Resource Pack
+        option.Specular_Reflections.comment = เปิดแสงสะท้อนทั้งหมดสำหรับแพ็ก LabPBR §aกินสเปก:§r ต่ำ
+        option.Screen_Space_Reflections.comment = เปิดการสะท้อนภาพรอบตัวบนหน้าจอ (SSR) §aกินสเปก:§r ปานกลาง
+        option.Rough_reflections.comment = คำนวณความขรุขระเพื่อเงาสะท้อนสมจริง §aกินสเปก:§r ปานกลางถึงสูง
+        option.Sky_reflection.comment = เปิดเงาสะท้อนท้องฟ้าและหมอกบนพื้นผิว §aกินสเปก:§r ต่ำถึงปานกลาง
+        option.Dynamic_SSR_quality.comment = ลดสเปก SSR ลงในจุดที่มองเห็นไม่เด่นชัด เพื่อช่วยให้เล่นลื่นขึ้น
+        option.Roughness_Threshold.comment = หากผิวหยาบเกินค่านี้ จะตัดเงาสะท้อนออกเพื่อประหยัดทรัพยากร
+        option.Sun_specular_Strength.comment = ปรับความจ้าของแสงสะท้อนดวงอาทิตย์บนพื้นผิว
+        option.reflection_quality.comment = ระดับคุณภาพของเงาสะท้อน Screen-Space
+
+screen.Subsurface_Scattering.comment = §bคืออะไร?§r แสงที่ทะลุส่องผ่านเนื้อวัตถุ เช่น ใบไม้ ผืนผ้า ผิวหนัง ที่เรืองแสงเมื่อโดนแดดส่องด้านหลัง
+    option.SSS_TYPE.comment = วิธีกำหนดวัตถุที่แสงทะลุได้: เชดเดอร์กำหนด หรือ Resource Pack กำหนด
+    option.MOB_SSS.comment = เปิดแสงทะลุตัวม็อบและผู้เล่น §aกินสเปก:§r ต่ำมาก
+    option.MISC_BLOCK_SSS.comment = เปิดแสงทะลุบล็อกหญ้าและผืนทราย §aกินสเปก:§r ต่ำมาก
+    option.Ambient_SSS.comment = แสงทะลุวัตถุที่เกิดจากแสงแวดล้อมของท้องฟ้า
+    option.ambientsss_brightness.comment = ปรับความสว่างของแสงทะลุวัตถุจากท้องฟ้า
+
+screen.Emissives.comment = §bคืออะไร?§r ลวดลายบล็อกที่สามารถเรืองแสงสว่างได้ด้วยตัวเองในที่มืด
+    option.Emissive_Brightness.comment = ปรับระดับความสว่างของการเรืองแสง
+    option.EMISSIVE_TYPE.comment = วิธีกำหนดบล็อกเรืองแสง: เชดเดอร์กำหนด หรือ Resource Pack กำหนด
+    option.Emissive_Curve.comment = ความเร็วที่แสงเรืองจะสว่างขึ้นจนถึงจุดสูงสุด
+
+screen.POM.comment = จำลองมิติความลึกรอยนูน 3D บนบล็อกเรียบจาก Resource Pack
+    option.POM.comment = §bคืออะไร?§r สร้างมิติรอยลึกและรอยนูนเสมือนจริง 3D บนพื้นผิวเรียบ §aกินสเปก:§r ปานกลางถึงสูง
+    option.MAX_ITERATIONS.comment = ความเนียนของชั้นมิติ POM ยิ่งมากยิ่งเนียน §aกินสเปก:§r สูง
+    option.POM_DEPTH.comment = ระดับความลึกของมิติรอยนูนบนบล็อก
+    option.MAX_DIST.comment = ระยะทางสูงสุดที่เอฟเฟกต์ POM จะแสดงผล §aกินสเปก:§r สูง
+    option.Adaptive_Step_length.comment = เพิ่มความคมชัดโดยอัตโนมัติ ช่วยลดภาระการประมวลผล
+    option.Horrible_slope_normals.comment = ระบบทดลองสร้างเหลี่ยมขอบเอียง (ไม่แนะนำให้เปิดใช้งาน)
+    
+screen.Porosity.comment = ปรับแต่งความเปียกชื้นของพื้นผิวและแอ่งน้ำขัง
+    option.Porosity.comment = §bคืออะไร?§r พื้นผิวดูดซับน้ำและสีเข้มขึ้นเมื่อฝนตก เช่น ดินหรือฟองน้ำเปียก §aกินสเปก:§r ต่ำ
+    option.Puddles.comment = เปิดแอ่งน้ำขังสะท้อนเงาบนพื้นดินเมื่อฝนตก §aกินสเปก:§r ต่ำ
+    option.Puddle_Size.comment = ปรับขนาดกว้างของแอ่งน้ำขัง
+
+screen.Fog.comment = ปรับแต่งระบบหมอก 3D เชิงปริมาตรและหมอกบรรยากาศ
+    option.VL_RENDER_RESOLUTION.comment = ความละเอียดเรนเดอร์ของหมอก 3D §aกินสเปก:§r สูง
+    option.VL_SAMPLES.comment = จำนวนสุ่มความเนียนของหมอก 3D §aกินสเปก:§r สูง
+    option.BLOOMY_FOG.comment = ความฟุ้งละมุนของหมอก ช่วยลดจุดรบกวนภาพ §aกินสเปก:§r ต่ำมาก
+    option.Haze_amount.comment = ความหนาของไอหมอกสีฟ้าตามทิวทัศน์ระยะไกล
+    option.RainFog_amount.comment = ความหนาแน่นของหมอกเมื่อมีฝนตก
+    option.RAYMARCH_CLOUDS_WITH_FOG.comment = §cโหมดทดลอง§r: หมอกละเอียดเมื่อผู้เล่นบินเข้าไปในหรือรอบก้อนเมฆ
+    option.BorderFog.comment = หมอกบดบังขอบชังก์ขณะที่เกมกำลังโหลดบล็อกใหม่
+
+    screen.TOD_fog.comment = ปรับแต่งความหนาแน่นของหมอกตามแต่ละช่วงเวลาในรอบวัน
+        option.TOD_Fog_mult.comment = ตัวคูณปรับเพิ่ม/ลดปริมาณหมอกรวมของทุกช่วงเวลา
+
+    screen.Cave_Fog.comment = ปรับแต่งหมอกในพื้นที่มืดทึบ เช่น ภายในถ้ำใต้ดิน
+        option.Cave_Fog.comment = เปิด/ปิด หมอกในพื้นที่มืดและถ้ำใต้ดิน §aกินสเปก:§r ต่ำ
+        option.CaveFogFallOff.comment = ระยะการจางของหมอกถ้ำ
+
+screen.Clouds.comment = ปรับแต่งเมฆ 3D เชิงปริมาตร (Volumetric Clouds)
+    option.VOLUMETRIC_CLOUDS.comment = เปิดเมฆ 3D แบบปริมาตรสมจริง §aกินสเปก:§r ปานกลางถึงสูง
+    option.CLOUDS_QUALITY.comment = ความละเอียดของเมฆ 3D §aกินสเปก:§r สูง
+    option.CLOUDS_SHADOWS.comment = เงาของก้อนเมฆทอดลงสู่พื้นดินและชั้นหมอก §aกินสเปก:§r ต่ำถึงปานกลาง
+    option.Daily_Weather.comment = ระบบหมุนเวียนสภาพอากาศ 10 วันสลับกันไปในแต่ละวัน §aกินสเปก:§r ต่ำ
+    option.CHOOSE_RANDOM_WEATHER_PROFILE.comment = สุ่มสภาพอากาศในแต่ละวันจาก 10 วันด้านล่าง
+    option.Cloud_Speed.comment = ความเร็วที่ก้อนเมฆลอยพัดผ่านไปตามลม
+    option.Rain_coverage.comment = ความหนาแน่นการปกคลุมของเมฆเมื่อฝนตก
+
+screen.World.comment = ปรับแต่งระบบสภาพแวดล้อมในโลก ทั้งน้ำ พืชไหวลม และอื่นๆ
+    screen.Water.comment = ปรับแต่งการแสดงผลและความใสของผิวน้ำ
+        option.WATER_REFLECTIONS.comment = เปิดแสงสะท้อนทั้งหมดบนผิวน้ำและวัตถุโปร่งแสง §aกินสเปก:§r ต่ำถึงสูง
+        option.SCREENSPACE_REFLECTIONS.comment = เปิดเงาสะท้อนภาพรอบตัวลงบนผิวน้ำ (SSR) §aกินสเปก:§r ปานกลาง
+        option.SSR_STEPS.comment = ความแม่นยำของเงาสะท้อนภาพบนผิวน้ำ §aกินสเปก:§r ปานกลางถึงสูง
+        option.WATER_SUN_SPECULAR.comment = แสงสะท้อนดวงอาทิตย์และดวงจันทร์บนผิวน้ำ §aกินสเปก:§r ต่ำ
+        option.WATER_BACKGROUND_SPECULAR.comment = แสงสะท้อนท้องฟ้าและหมอกบนผิวน้ำ §aกินสเปก:§r ต่ำถึงปานกลาง
+        option.Refraction.comment = การหักเหแสงใต้น้ำ ช่วยให้ภาพใต้น้ำพริ้วไหวตามคลื่น §aกินสเปก:§r ต่ำ
+        option.Dirt_Amount.comment = ปริมาณตะกอนความขุ่นของน้ำ ควบคุมความหนาหมอกใต้น้ำ
+        option.Water_Top_Layer.comment = พิกัดแกน Y ที่เป็นระดับผิวน้ำทะเลในโลก
+        
+        screen.Water_fog_color.comment = ปรับแต่งเฉดสีของหมอกใต้น้ำ
+
+screen.Climate.comment = ปรับแต่งสภาพภูมิอากาศ สีสัน 4 ฤดู และหมอกเฉพาะไบโอม
+    screen.Seasons.comment = ระบบเปลี่ยนสีต้นไม้ใบหญ้าตาม 4 ฤดู: ร้อน ร่วง หนาว ผลิ
+        option.Seasons.comment = เปิดระบบเปลี่ยนสีธรรมชาติหมุนเวียน 4 ฤดู §aกินสเปก:§r ต่ำ
+        option.Season_Length.comment = กำหนดจำนวนวันในเกมของแต่ละฤดูกาล
+        option.Snowy_Winter.comment = เปิดให้มีหิมะตกสะสมในฤดูหนาว §aกินสเปก:§r ต่ำ
+        screen.Summer_colors.comment = เฉดสีของต้นไม้ใบหญ้าในฤดูร้อน
+        screen.Fall_colors.comment = เฉดสีของต้นไม้ใบหญ้าในฤดูใบไม้ร่วง
+        screen.Winter_colors.comment = เฉดสีของต้นไม้ใบหญ้าในฤดูหนาว
+        screen.Spring_colors.comment = เฉดสีของต้นไม้ใบหญ้าในฤดูใบไม้ผลิ
+    
+    option.PER_BIOME_ENVIRONMENT.comment = เปิดบรรยากาศพิเศษเฉพาะในบางไบโอม §aกินสเปก:§r ต่ำ
+
+        screen.SWAMP.comment = ปรับแต่งบรรยากาศเฉพาะในไบโอมบึง (Swamp)
+            option.SWAMP_ENV.comment = เปิดบรรยากาศเฉพาะไบโอมนี้
+
+        screen.JUNGLE.comment = ปรับแต่งบรรยากาศเฉพาะในไบโอมป่าดงดิบ (Jungle)
+            option.JUNGLE_ENV.comment = เปิดบรรยากาศเฉพาะไบโอมนี้
+
+        screen.DARKFOREST.comment = ปรับแต่งบรรยากาศเฉพาะในไบโอมป่าทึบ (Dark Forest)
+            option.DARKFOREST_ENV.comment = เปิดบรรยากาศเฉพาะไบโอมนี้
+
+
+screen.Waving_Stuff.comment = ปรับแต่งการไหวเอนตามแรงลมของต้นไม้และใบหญ้า
+    option.WAVY_PLANTS.comment = เปิดให้พืชพรรณไหวเอนตามกระแสลม §aกินสเปก:§r ต่ำมาก
+    option.WAVY_STRENGTH.comment = ความแรงในการไหวเอนของพืช
+    option.WAVY_SPEED.comment = ความเร็วในการไหวเอนของพืช
+
+screen.Post_Processing.comment = ปรับแต่งโทนภาพ คอนทราสต์ และเอฟเฟกต์ประมวลผลขั้นสุดท้าย
+    screen.Tonemapping.comment = ปรับแต่งโทนภาพ โทนสี และคอนทราสต์แสงเงา
+    screen.Exposure.comment = ปรับความสว่างและการเปิดรับแสงของกล้อง
+    screen.DepthOfField.comment = ปรับแต่งระยะชัดลึก หน้าชัดหลังเบลอ (DOF)
+    screen.Purkinje_effect.comment = จำลองการปรับสายตามองเห็นในความมืดของมนุษย์ (Purkinje)
+    option.SHARPENING.comment = ปรับความคมชัดของภาพ ช่วยฟื้นรายละเอียดที่เบลอจากการลบรอยหยัก
+    option.BLOOM_STRENGTH.comment = ความฟุ้งเรืองแสงของวัตถุที่สว่างจ้า (Bloom)
+    screen.TAA_OPTIONS.comment = ปรับแต่งระบบลบรอยหยักตามขอบภาพ (Anti-Aliasing)
+        option.SCREENSHOT_MODE.comment = โหมดซ้อนเฟรมถ่ายภาพ ให้ภาพคมชัดเนียนสวยไร้จุดรบกวน
+        option.TAA.comment = เปิดลบรอยหยักแบบ TAA ช่วยให้ขอบภาพเรียบเนียน ไม่เป็นรอยฟันปลา §aกินสเปก:§r ต่ำ
+        option.BLEND_FACTOR.comment = สัดส่วนการใช้เฟรมเก่า: ค่าสูง = คมชัดแต่กะพริบ, ค่าต่ำ = เนียนขึ้นแต่มีเงาลาก
+        option.TAA_UPSCALING.comment = เปิดอัปสเกลภาพแบบ TAA ให้ภาพคมชัดในขณะที่ได้เฟรมเรตสูงขึ้น
+        option.SCALE_FACTOR.comment = สัดส่วนความละเอียดเริ่มต้นที่จะนำมาอัปสเกล
+	screen.COLOR_GRADING.comment = เมนูขั้นสูงสำหรับปรับแต่งเกรดสีภาพ
+		option.LUMINANCE_CURVE.comment = เปิดใช้เส้นโค้งโทนภาพ (Tone Curve) ประมวลผลเป็นอันดับแรก
+		option.COLOR_GRADING_ENABLED.comment = เปิดใช้งานเกรดสีภาพ แถบ RGB จะไม่กระทบความสว่างรวม
+
+option.RESOURCEPACK_SKY.comment = เปิดใช้งานท้องฟ้าจาก Resource Pack §aกินสเปก:§r ต่ำมาก
+option.SKY_GROUND = ระนาบพื้นดินบรรยากาศ
+
+option.MATERIAL_AO.comment = เปิดใช้เงาซอกมุมตามที่ Resource Pack กำหนดมา §aกินสเปก:§r ต่ำมาก
+option.WATER_WAVE_STRENGTH.comment = ปรับความสูงและความแรงของลูกคลื่นน้ำ
+option.MOONPHASE_BASED_MOONLIGHT.comment = ปรับความสว่างแสงจันทร์ในแต่ละคืนอัตโนมัติตามข้างขึ้นข้างแรม
+
+option.END_STORM_DENSTIY.comment = ความหนาแน่นของเมฆหมอกพายุมืดครึ้มใน The End
+option.NETHER_PLUME_DENSITY.comment = ความหนาแน่นของเสาควันเรืองแสงใน Nether
+
+option.CloudLayer0.comment = เปิดชั้นเมฆคิวมูลัสขนาดเล็ก ระดับล่าง §aกินสเปก:§r ปานกลาง
+option.CloudLayer0_coverage.comment = พื้นที่ปกคลุมท้องฟ้าของเมฆชั้นนี้
+option.CloudLayer0_density.comment = ความหนาทึบของมวลเมฆชั้นนี้
+option.CloudLayer0_height.comment = ระดับความสูงของเมฆชั้นนี้
+
+option.CloudLayer1.comment = เปิดชั้นเมฆคิวมูลัสขนาดใหญ่ ระดับกลาง §aกินสเปก:§r ปานกลาง
+option.CloudLayer1_coverage.comment = พื้นที่ปกคลุมท้องฟ้าของเมฆชั้นนี้
+option.CloudLayer1_density.comment = ความหนาทึบของมวลเมฆชั้นนี้
+option.CloudLayer1_height.comment = ระดับความสูงของเมฆชั้นนี้ §c(ห้ามต่ำกว่าเมฆชั้นเล็ก)§r
+
+option.CloudLayer2.comment = เปิดชั้นเมฆแผ่นบาง ระดับสูง §aกินสเปก:§r ต่ำ
+option.CloudLayer2_coverage.comment = พื้นที่ปกคลุมท้องฟ้าของเมฆชั้นนี้
+option.CloudLayer2_density.comment = ความหนาทึบของมวลเมฆชั้นนี้
+option.CloudLayer2_height.comment = ระดับความสูงของเมฆชั้นนี้ §c(ห้ามต่ำกว่าเมฆชั้นใหญ่)§r
+
+option.SKY_GROUND.comment = ครึ่งล่างของท้องฟ้าที่จำลองเป็นพื้นดินระยะไกล §aกินสเปก:§r ต่ำมากๆ
+option.SNELLS_WINDOW.comment = วงกลมสะท้อนมืดที่มองเห็นเมื่ออยู่ใต้น้ำตามหลักการหักเหแสงธรรมชาติ
+option.entityShadowDistanceMul.comment = ปรับระยะทอดเงาของสิ่งมีชีวิตและวัตถุ ช่วยเพิ่มความลื่นไหลในจุดที่มีม็อบเยอะ
+
+screen.DISTANT_HORIZONS_SETTINGS = Distant Horizons §c(ต้องใช้ Iris)§r
+option.DH_OVERDRAW_PREVENTION = ป้องกันเรนเดอร์ซ้อนทับ (Overdraw)
+option.OVERDRAW_MAX_DISTANCE = ระยะสูงสุดป้องกัน Overdraw
+    value.OVERDRAW_MAX_DISTANCE.0 = ไม่จำกัด
+    value.OVERDRAW_MAX_DISTANCE.32 = 2 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.48 = 3 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.64 = 4 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.80 = 5 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.96 = 6 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.112 = 7 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.128 = 8 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.144 = 9 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.160 = 10 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.176 = 11 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.192 = 12 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.208 = 13 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.224 = 14 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.240 = 15 ชังก์
+    value.OVERDRAW_MAX_DISTANCE.256 = 16 ชังก์
+
+option.DH_AMBIENT_OCCLUSION = เงาซอกมุมบนชังก์ไกล (LOD AO)
+option.DH_SUBSURFACE_SCATTERING = แสงทะลุวัตถุบนชังก์ไกล (LOD SSS)
+option.DH_SCREENSPACE_REFLECTIONS = สะท้อนภาพบนชังก์ไกล (LOD SSR)
+
+option.DISTANT_HORIZONS_SHADOWMAP = §c(กินสเปกสูง)§r รองรับเงา DH
+option.DISTANT_HORIZONS_SHADOWMAP.comment = §cกินสเปกมหาศาล§r ต้องตั้งระยะเงาเป็น 32 ชังก์ขึ้นไป และความละเอียดเป็น 4096 ขึ้นไป
+option.TOGGLE_VL_FOG = สวิตช์เปิด/ปิดหมอก 3D ทั้งหมด
+option.TOGGLE_VL_FOG.comment = สวิตช์ปุ่มเดียวสำหรับเปิดหรือปิดระบบหมอก 3D ทั้งหมด
+
+option.TRANSLUCENT_COLORED_SHADOWS.comment = ให้กระจกสีส่องผ่านแสงแดดเป็นเงาสีสันสดใสทอดลงบนพื้น §aกินสเปก:§r ปานกลาง
