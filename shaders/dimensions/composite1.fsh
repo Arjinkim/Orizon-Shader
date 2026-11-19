@@ -1353,7 +1353,7 @@ void main() {
 	}
 
 	#if defined NIGHT_FIREFLIES && defined OVERWORLD_SHADER
-		gl_FragData[0].rgb += renderNocturnalFireflies(feetPlayerPos_normalized, length(feetPlayerPos), cameraPosition, frameTimeCounter, clamp(-unsigned_WsunVec.y * 2.0, 0.0, 1.0), rainStrength);
+		gl_FragData[0].rgb += renderNocturnalFireflies(feetPlayerPos_normalized, length(feetPlayerPos), cameraPosition, frameTimeCounter, clamp(-unsigned_WsunVec.y * 2.0, 0.0, 1.0), rainStrength, swappedDepth);
 	#endif
 
 	////// DEBUG VIEW STUFF
