@@ -272,3 +272,54 @@ vec3 renderAuroraBorealis(vec3 viewDir, float time, float rain) {
 
     return auroraAccum * horizonFade * zenithFade * northMask * weatherFade * AURORA_BRIGHTNESS;
 }
+
+// Dynamic Nocturnal Shooting Stars (Meteors)
+vec3 renderShootingStars(vec3 viewDir, float time) {
+    if (viewDir.y <= 0.05) return vec3(0.0);
+
+    // Each meteor event occurs every ~6.5 seconds
+    float cycle = 6.5;
+    float tCycle = mod(time, cycle);
+    float meteorId = floor(time / cycle);
+
+    // Visible duration of each meteor streak is ~0.55s
+    float meteorDuration = 0.55;
+    if (tCycle > meteorDuration) return vec3(0.0);
+
+    // Pseudo-random start direction and velocity trajectory across the sky
+    float seedX = hash12(vec2(meteorId * 13.7, 47.1));
+    float seedY = hash12(vec2(meteorId * 29.3, 83.5));
+    float seedZ = hash12(vec2(meteorId * 71.9, 19.3));
+
+    // Direction on upper hemisphere
+    vec3 meteorStart = normalize(vec3((seedX - 0.5) * 1.8, 0.45 + seedY * 0.45, (seedZ - 0.5) * 1.8));
+    vec3 meteorDir = normalize(vec3((seedZ - 0.5) * 1.2, -0.65 - seedX * 0.45, (seedX - 0.5) * 1.2));
+
+    float progress = tCycle / meteorDuration;
+    float streakLength = 0.22; // Arc length of the glowing ionization trail
+
+    vec3 headPos = normalize(meteorStart + meteorDir * progress * 0.95);
+    vec3 tailPos = normalize(meteorStart + meteorDir * max(0.0, progress * 0.95 - streakLength));
+
+    // Distance from viewDir to the 3D line segment on celestial sphere
+    vec3 v = viewDir;
+    vec3 a = tailPos;
+    vec3 b = headPos;
+    vec3 ab = b - a;
+    float tSeg = clamp(dot(v - a, ab) / max(dot(ab, ab), 0.0001), 0.0, 1.0);
+    vec3 closestPoint = a + ab * tSeg;
+    float distToStreak = length(v - normalize(closestPoint));
+
+    // Streak appearance: brilliant radiant white-cyan head with fading soft tail
+    if (distToStreak < 0.006) {
+        float coreRadius = 0.0018;
+        float tailTaper = pow(tSeg, 1.8); // Brighter towards the head
+        float core = exp(-pow(distToStreak / coreRadius, 2.0)) * tailTaper;
+        float halo = exp(-distToStreak * 350.0) * tailTaper * 0.35;
+
+        vec3 meteorColor = mix(vec3(0.55, 0.85, 1.20), vec3(1.10, 1.05, 0.95), tSeg);
+        return meteorColor * (core * 8.0 + halo * 2.0);
+    }
+
+    return vec3(0.0);
+}

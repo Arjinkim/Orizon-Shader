@@ -1,25 +1,46 @@
-#ifdef IS_LPV_ENABLED
-    vec3 GetHandLight(const in int itemId, const in vec3 playerPos, const in vec3 normal) {
-        vec3 lightFinal = vec3(0.0);
-        vec3 lightColor = vec3(0.0);
-        float lightRange = 0.0;
+vec3 GetHandLight(const in int itemId, const in vec3 playerPos, const in vec3 normal) {
+    if (itemId <= 0) return vec3(0.0);
 
+    vec3 lightColor = vec3(1.0, 0.60, 0.20);
+    float lightRange = float(HANDHELD_LIGHT_RANGE);
+
+    #if defined IS_LPV_ENABLED && defined MC_GL_EXT_shader_image_load_store
         uvec2 blockData = texelFetch(texBlockData, itemId, 0).rg;
         vec4 lightColorRange = unpackUnorm4x8(blockData.r);
-        lightColor = srgbToLinear(lightColorRange.rgb);
-        lightRange = lightColorRange.a * 255.0;
-
-        if (lightRange > 0.0) {
-            float lightDist = length(playerPos);
-            vec3 lightDir = playerPos / lightDist;
-            float NoL = 1.0;//max(dot(normal, lightDir), 0.0);
-            float falloff = pow(1.0 - lightDist / lightRange, 3.0);
-            lightFinal = lightColor * NoL * max(falloff, 0.0);
+        vec3 lpvCol = srgbToLinear(lightColorRange.rgb);
+        float lpvRange = lightColorRange.a * 255.0;
+        if (lpvRange > 0.0) {
+            lightColor = lpvCol;
+            lightRange = lpvRange;
         }
+    #endif
 
-        return lightFinal;
+    // Distinct specialized spectral colors for held items
+    if (itemId == 1022 || itemId == 1023) {
+        // Soul Lantern / Soul Torch: Spectral Ice Cyan
+        lightColor = vec3(0.12, 0.72, 1.05);
+    } else if (itemId == 1018) {
+        // Redstone Torch: Vivid Crimson Red
+        lightColor = vec3(1.05, 0.08, 0.04);
+        lightRange = min(lightRange, 8.0);
+    } else if (itemId == 1020) {
+        // Sea Lantern: Crystal Pale Aqua
+        lightColor = vec3(0.35, 0.95, 0.90);
+    } else if (itemId == 1016) {
+        // Lava Bucket: Molten Volcanic Amber
+        lightColor = vec3(1.10, 0.40, 0.05);
+    } else if (itemId == 1010) {
+        // Glow Berries: Bioluminescent Golden-Yellow
+        lightColor = vec3(1.00, 0.75, 0.20);
+        lightRange = min(lightRange, 9.0);
     }
-#endif
+
+    float lightDist = length(playerPos);
+    if (lightDist >= lightRange) return vec3(0.0);
+
+    float falloff = pow(clamp(1.0 - lightDist / lightRange, 0.0, 1.0), 2.2);
+    return lightColor * falloff * 1.35;
+}
 
 vec3 doBlockLightLighting(
     vec3 lightColor, float lightmap, float exposureValue,
@@ -50,16 +71,14 @@ vec3 doBlockLightLighting(
         // outside the voxel volume, lerp to vanilla lighting as a fallback
         blockLight = mix(blockLight, lpvBlockLight/5.0, voxelRangeFalloff);
 
-        #ifdef Hand_Held_lights
-            // create handheld lightsources
-            const vec3 normal = vec3(0.0); // TODO
+    #endif
 
-                if (heldItemId > 0)
-                blockLight += GetHandLight(heldItemId, playerPos, normal);
-
-                if (heldItemId2 > 0)
-                blockLight += GetHandLight(heldItemId2, playerPos, normal);
-        #endif
+    #ifdef Hand_Held_lights
+        const vec3 handNormal = vec3(0.0);
+        if (heldItemId > 0)
+            blockLight += GetHandLight(heldItemId, playerPos, handNormal);
+        if (heldItemId2 > 0)
+            blockLight += GetHandLight(heldItemId2, playerPos, handNormal);
     #endif
 
     // try to make blocklight have consistent visiblity in different light levels.

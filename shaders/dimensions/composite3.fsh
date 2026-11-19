@@ -1,4 +1,5 @@
 #include "/lib/settings.glsl"
+#include "/lib/lens_flare.glsl"
 
 flat varying vec3 zMults;
 
@@ -482,6 +483,20 @@ void main() {
   #endif
   
   // if(texcoord.x > 0.5 )color.rgb = skyCloudsFromTex(np3, colortex4).rgb/30.0;
+
+  #ifdef CINEMATIC_LENS_FLARE
+  vec4 sunClip = gbufferProjection * vec4(sunVec, 1.0);
+  if (sunClip.w > 0.0 && sunVec.z < 0.0) {
+      vec2 sunScreen = (sunClip.xy / sunClip.w) * 0.5 + 0.5;
+      if (sunScreen.x >= -0.15 && sunScreen.x <= 1.15 && sunScreen.y >= -0.15 && sunScreen.y <= 1.15) {
+          float sunDepth = texture2D(depthtex0, clamp(sunScreen, 0.0, 1.0)).r;
+          float sunNotOccluded = sunDepth >= 1.0 ? 1.0 : 0.0;
+          float aspect = texelSize.x > 0.0 ? (texelSize.y / texelSize.x) : 1.7777;
+          float sunVis = sunNotOccluded * clamp(WsunVec.y * 2.0, 0.0, 1.0) * (1.0 - rainStrength * 1.5);
+          color.rgb += renderCinematicLensFlare(texcoord, sunScreen, sunVis, aspect);
+      }
+  }
+  #endif
 
   gl_FragData[0].r = bloomyFogMult; // pass fog alpha so bloom can do bloomy fog
   gl_FragData[1].rgb = clamp(color.rgb, 0.0,68000.0);

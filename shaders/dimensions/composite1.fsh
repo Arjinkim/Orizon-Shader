@@ -168,6 +168,7 @@ vec3 toScreenSpace(vec3 p) {
 #include "/lib/Shadows.glsl"
 #include "/lib/stars.glsl"
 #include "/lib/fireflies.glsl"
+#include "/lib/rainbow.glsl"
 
 #ifdef OVERWORLD_SHADER
 	
@@ -741,6 +742,11 @@ vec3 SubsurfaceScattering_sun(vec3 albedo, float Scattering, float Density, floa
 
 	scatter *= 1.0 + CustomPhase(lightPos)*6.0; // ~10x brighter at the peak
 
+	#ifdef BOTANICAL_LEAF_SSS
+		vec3 chlorophyllTint = mix(vec3(1.0), albedo * vec3(1.15, 1.35, 0.50) + vec3(0.04, 0.10, 0.02), clamp(Density * 1.5, 0.0, 1.0));
+		scatter *= chlorophyllTint;
+	#endif
+
 	return scatter;
 }
 
@@ -966,6 +972,12 @@ void main() {
 				#ifdef AURORA_BOREALIS
 					Background += renderAuroraBorealis(feetPlayerPos_normalized, frameTimeCounter, rainStrength) * nightVisibility;
 				#endif
+				#ifdef SHOOTING_STARS
+					Background += renderShootingStars(orbitstar, frameTimeCounter) * nightVisibility * (1.0 - rainStrength);
+				#endif
+				#ifdef DYNAMIC_RAINBOWS
+					Background += renderDynamicRainbow(feetPlayerPos_normalized, WsunVec, rainStrength, frameTimeCounter);
+				#endif
 
 				Background *= atmosphereGround;
 			#endif
@@ -1099,6 +1111,26 @@ void main() {
 
 		// apply caustics to the lighting, and make sure they dont look weird
 		DirectLightColor *= mix(1.0, waterCaustics(feetPlayerPos + cameraPosition, WsunVec)*WATER_CAUSTICS_BRIGHTNESS + 0.25, clamp(estimatedDepth,0,1));
+
+		#ifdef UNDERWATER_GOD_RAYS
+			if (isEyeInWater == 1) {
+				float sunFacing = max(dot(feetPlayerPos_normalized, WsunVec), 0.0);
+				float waterRays = pow(sunFacing, 8.0) * max(WsunVec.y, 0.0) * (1.0 - rainStrength);
+				Direct_lighting += vec3(0.12, 0.58, 0.82) * DirectLightColor * waterRays * 0.45;
+
+				vec3 marineWorld = feetPlayerPos + cameraPosition;
+				vec3 marineCell = floor(marineWorld * 2.5);
+				float marineHash = fract(sin(dot(marineCell, vec3(12.9898, 78.233, 45.164))) * 43758.5453);
+				if (marineHash > 0.92) {
+					float motePulse = sin(frameTimeCounter * 1.5 + marineHash * 6.28) * 0.5 + 0.5;
+					float moteDist = length(feetPlayerPos);
+					if (moteDist > 2.0 && moteDist < 20.0) {
+						vec3 moteColor = vec3(0.35, 0.92, 0.80) * motePulse * smoothstep(20.0, 4.0, moteDist) * 0.25;
+						Direct_lighting += moteColor * (lightmap.y * 0.8 + 0.2);
+					}
+				}
+			}
+		#endif
 	}
 
 	#ifdef END_SHADER
