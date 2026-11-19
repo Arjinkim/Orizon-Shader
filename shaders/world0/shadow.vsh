@@ -86,17 +86,18 @@ vec3 calcMovePlants(in vec3 pos) {
     weatherMult = mix(weatherMult, float(WAVY_STORM_MULTIPLIER), stormFactor);
 
     float weatherSpeed = mix(1.0, 1.45, rainFactor);
-    weatherSpeed = mix(weatherSpeed, 2.25, stormFactor);
+    weatherSpeed = mix(weatherSpeed, 2.35, stormFactor);
 
+    float t = frameTimeCounter * WAVY_SPEED * weatherSpeed;
     const vec2 windDir = vec2(0.85, 0.52);
     float windCoord = dot(pos.xz, windDir);
 
-    float wave1 = sin(windCoord * 0.20 - frameTimeCounter * 2.8 * WAVY_SPEED * weatherSpeed + pos.y * 0.20);
-    float wave2 = sin(windCoord * 0.45 + pos.x * 0.3 - frameTimeCounter * 5.0 * WAVY_SPEED * weatherSpeed);
-    float flutter = sin(dot(pos, vec3(1.2, 0.9, 1.4)) * 2.4 - frameTimeCounter * 8.5 * WAVY_SPEED * weatherSpeed);
+    float wave1 = sin(windCoord * 0.25 - t * 3.0 + pos.y * 0.20);
+    float wave2 = sin(windCoord * 0.55 + pos.x * 0.4 - t * 5.5);
+    float flutter = sin(dot(pos, vec3(1.2, 0.9, 1.4)) * 2.5 - t * 9.0);
 
-    float plantDisplacement = (wave1 * 0.65 + wave2 * 0.25 + flutter * (0.10 + 0.15 * stormFactor)) * weatherMult;
-    vec2 xzOffset = windDir * plantDisplacement * 0.32 * WAVY_STRENGTH;
+    float plantDisp = (wave1 * 0.70 + wave2 * 0.30 + flutter * (0.15 + 0.25 * stormFactor)) * weatherMult;
+    vec2 xzOffset = windDir * plantDisp * 0.45 * WAVY_STRENGTH;
     float yOffset = -length(xzOffset) * 0.35;
 
     return vec3(xzOffset.x, yOffset, xzOffset.y) * (1.0 / 255.0);
@@ -110,32 +111,28 @@ vec3 calcMoveLeaves(in vec3 pos) {
     float weatherMult = mix(1.0, float(WAVY_RAIN_MULTIPLIER), rainFactor);
     weatherMult = mix(weatherMult, float(WAVY_STORM_MULTIPLIER), stormFactor);
 
-    float weatherSpeed = mix(1.0, 1.40, rainFactor);
-    weatherSpeed = mix(weatherSpeed, 2.20, stormFactor);
+    float weatherSpeed = mix(1.0, 1.45, rainFactor);
+    weatherSpeed = mix(weatherSpeed, 2.35, stormFactor);
 
+    float t = frameTimeCounter * WAVY_SPEED * weatherSpeed;
+
+    // Multi-frequency vertex leaf rustling & fluttering
+    vec3 waveTime = t * vec3(2.26, 8.44, 1.70);
+    vec3 flutter = sin(waveTime - pos * 1.5) * 0.22;
+    vec3 flutter2 = sin(waveTime * 1.6 + pos * 2.8) * 0.12;
+
+    // Strong canopy branch wind sway
     const vec2 windDir = vec2(0.85, 0.52);
-    const vec2 crossWind = vec2(-0.52, 0.85);
     float windCoord = dot(pos.xz, windDir);
-    float crossCoord = dot(pos.xz, crossWind);
+    float canopySway = sin(windCoord * 0.30 - t * 2.5 + pos.y * 0.25);
+    vec3 branchSway = vec3(windDir.x, -0.25, windDir.y) * (canopySway * 0.65);
 
-    // Primary canopy sway (large, visible sweeping wind motion)
-    float mainWave = sin(windCoord * 0.22 - frameTimeCounter * 2.6 * WAVY_SPEED * weatherSpeed + pos.y * 0.18);
-    vec3 mainOffset = vec3(windDir.x, -0.25, windDir.y) * (mainWave * 0.45);
+    // Storm turbulent whipping gusts
+    float stormGust = sin(windCoord * 0.80 - t * 8.0) * stormFactor;
+    vec3 turbulence = vec3(stormGust * 0.40, -abs(stormGust) * 0.25, stormGust * 0.30);
 
-    // Secondary cross-sway (organic 3D circular/elliptical canopy sway)
-    float crossWave = cos(crossCoord * 0.35 - frameTimeCounter * 3.8 * WAVY_SPEED * weatherSpeed + pos.y * 0.32);
-    vec3 crossOffset = vec3(crossWind.x, -0.15, crossWind.y) * (crossWave * 0.18);
-
-    // Micro leaf fluttering & vertex trembling (rustling leaf clusters)
-    vec3 leafFlutter = sin(pos * 2.6 + vec3(frameTimeCounter * 6.2, frameTimeCounter * 7.5, frameTimeCounter * 5.8) * WAVY_SPEED * weatherSpeed);
-    vec3 flutterOffset = leafFlutter * 0.12;
-
-    // Storm turbulent gusts
-    float stormGust = sin(windCoord * 0.75 - frameTimeCounter * 9.5 * WAVY_SPEED) * stormFactor;
-    vec3 stormTurbulence = vec3(stormGust * 0.28, -abs(stormGust) * 0.18, stormGust * 0.22);
-
-    vec3 totalLeafMove = (mainOffset + crossOffset + flutterOffset + stormTurbulence) * weatherMult * WAVY_STRENGTH;
-    return totalLeafMove * (1.0 / 255.0);
+    vec3 totalMove = (branchSway + flutter + flutter2 + turbulence) * weatherMult * WAVY_STRENGTH;
+    return totalMove * (1.0 / 255.0);
 }
 
 vec3 calcMoveLeaves(in vec3 pos, in float f0, in float f1, in float f2, in float f3, in float f4, in float f5, in vec3 amp1, in vec3 amp2) {
@@ -288,18 +285,16 @@ void main() {
 
 		if(	
 			((InterpolateFromBase && isGroundPlant) || (!InterpolateFromBase && isCeilingPlant) || isAirWaving)
-			&& distToCam < 64.0
+			&& distToCam < 144.0
 		){
-			float shadowFade = 1.0 - smoothstep(44.0, 64.0, distToCam);
+			float shadowFade = 1.0 - smoothstep(100.0, 144.0, distToCam);
 			vec3 worldpos = playerpos;
 
 			// apply displacement for waving plant blocks
 			worldpos += calcMovePlants(playerpos + cameraPosition) * (max(gl_MultiTexCoord1.y, 120.0) * shadowFade);
 
 			// apply displacement for waving leaf blocks specifically, overwriting the other waving mode. these wave off of the air. they wave uniformly
-			#ifdef WAVY_LEAVES
 			if(blockId == BLOCK_AIR_WAVING) worldpos = playerpos + calcMoveLeaves(playerpos + cameraPosition, 0.0040, 0.0064, 0.0043, 0.0035, 0.0037, 0.0041, vec3(1.0, 0.2, 1.0), vec3(0.5, 0.1, 0.5)) * (max(gl_MultiTexCoord1.y, 160.0) * shadowFade);
-#endif
 			
 			position = mat3(shadowModelView) * worldpos + shadowModelView[3].xyz;
 		}
