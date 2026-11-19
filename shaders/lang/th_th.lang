@@ -747,3 +747,17 @@ option.TOGGLE_VL_FOG = สวิตช์เปิด/ปิดหมอก 3D �
 option.TOGGLE_VL_FOG.comment = สวิตช์ปุ่มเดียวสำหรับเปิดหรือปิดระบบหมอก 3D ทั้งหมด
 
 option.TRANSLUCENT_COLORED_SHADOWS.comment = ให้กระจกสีส่องผ่านแสงแดดเป็นเงาสีสันสดใสทอดลงบนพื้น §aกินสเปก:§r ปานกลาง
+
+screen.Night_Sky = ท้องฟ้ากลางคืนและบรรยากาศ (Night Sky)
+    option.AURORA_BOREALIS = แสงเหนือ (Aurora Borealis)
+    option.AURORA_BOREALIS.comment = แสงเหนือพลิ้วไหวเต้นระยิบระยับบนท้องฟ้าทิศเหนือ มีการไล่ระดับสีตามความสูง (เขียวมรกต ฟ้าคราม ม่วง และแดงกุหลาบ)
+    option.AURORA_BRIGHTNESS = ความสว่างแสงเหนือ
+    option.AURORA_BRIGHTNESS.comment = ปรับความสว่างและความเด่นชัดของม่านแสงเหนือ
+    option.MILKY_WAY_NEBULA = ทางช้างเผือกและเนบิวลา (Milky Way)
+    option.MILKY_WAY_NEBULA.comment = ทางช้างเผือกใจกลางกาแล็กซีสว่างนวลตา พร้อมรอยแยกฝุ่นอวกาศและกลุ่มก๊าซเนบิวลาหลากสี
+    option.STAR_TWINKLE = ดวงดาวระยิบระยับ (Twinkling Stars)
+    option.STAR_TWINKLE.comment = ดวงดาวหลากสีตามอุณหภูมิดาวฤกษ์จริง พร้อมการกระพริบระยิบระยับผ่านชั้นบรรยากาศและกระจุกดาวลูกไก่
+    option.NIGHT_FIREFLIES = หิ่งห้อยยามราตรี (Nocturnal Fireflies)
+    option.NIGHT_FIREFLIES.comment = ฝูงหิ่งห้อยเรืองแสงสีทองอมเขียว ลอยละล่องและกะพริบแสงเบาๆ เหนือทุ่งหญ้าและในป่ายามค่ำคืน
+    option.FIREFLY_BRIGHTNESS = ความสว่างหิ่งห้อย
+    option.FIREFLY_BRIGHTNESS.comment = ปรับระดับความสว่างของการเรืองแสงของหิ่งห้อย

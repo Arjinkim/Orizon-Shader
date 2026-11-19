@@ -105,43 +105,43 @@ float stars(vec3 viewPos){
 
 // Enhanced multi-layer stars with realistic stellar blackbody colors, clusters & twinkling
 vec3 renderEnhancedStars(vec3 viewPos, float time) {
-    vec3 sample1 = viewPos * 320.0;
-    float primaryRaw = max(1.0 - StableStarField(sample1, 0.991), 0.0);
-    float primaryStar = exp(primaryRaw * -22.0);
+    vec3 sample1 = viewPos * 340.0;
+    float primaryRaw = max(1.0 - StableStarField(sample1, 0.990), 0.0);
+    float primaryStar = exp(primaryRaw * -20.0);
 
     vec3 cellId = floor(sample1);
-    float tempHash = hash13(cellId + vec3(17.3, 43.1, 9.7));
+    float tempHash  = hash13(cellId + vec3(17.3, 43.1, 9.7));
     float phaseHash = hash13(cellId + vec3(5.1, 89.2, 61.4));
-    float magHash = hash13(cellId + vec3(33.7, 11.9, 73.2));
+    float magHash   = hash13(cellId + vec3(33.7, 11.9, 73.2));
 
     // Realistic stellar classification & blackbody tint:
     // O/B: Intense blue-white (15,000K+)
     // A/F: Pure crisp diamond white (8,000K)
     // G: Warm golden sun-like (5,500K)
     // K/M: Vibrant orange-red giant (3,500K)
-    vec3 starColor = mix(vec3(0.68, 0.82, 1.00), vec3(1.00, 0.98, 0.94), clamp(tempHash * 2.2, 0.0, 1.0));
-    starColor = mix(starColor, vec3(1.00, 0.70, 0.38), clamp(tempHash * 2.5 - 1.3, 0.0, 1.0));
+    vec3 starColor = mix(vec3(0.65, 0.82, 1.00), vec3(1.00, 0.98, 0.95), clamp(tempHash * 2.2, 0.0, 1.0));
+    starColor = mix(starColor, vec3(1.00, 0.68, 0.35), clamp(tempHash * 2.5 - 1.25, 0.0, 1.0));
 
-    // Magnitude variation: a few brilliant standout stars + many finer stars
-    float magnitude = 0.65 + 0.95 * pow(magHash, 3.5);
+    // Magnitude variation: brilliant prominent stars + dense star field
+    float magnitude = 0.75 + 1.35 * pow(magHash, 3.2);
 
     // Natural atmospheric scintillation (independent star twinkle)
-    float twinkle = 0.76 + 0.24 * sin(time * (1.8 + magHash * 2.2) + phaseHash * 6.2831853);
+    float twinkle = 0.68 + 0.32 * sin(time * (2.2 + magHash * 3.1) + phaseHash * 6.2831853);
 
     // Faint unresolved background star cluster haze (milky cosmic dust)
-    float secondaryRaw = max(1.0 - StableStarField(viewPos * 560.0 + vec3(23.1), 0.987), 0.0);
-    float secondaryStar = exp(secondaryRaw * -25.0) * 0.32;
+    float secondaryRaw = max(1.0 - StableStarField(viewPos * 580.0 + vec3(23.1), 0.986), 0.0);
+    float secondaryStar = exp(secondaryRaw * -24.0) * 0.42;
 
     // Pleiades-like open cluster accent
     vec3 clusterDir = normalize(vec3(0.35, 0.75, 0.55));
     float clusterDist = length(cross(viewPos, clusterDir));
     float clusterMask = exp(-clusterDist * clusterDist * 160.0);
-    float clusterStars = max(1.0 - StableStarField(viewPos * 720.0, 0.982), 0.0);
-    clusterStars = exp(clusterStars * -20.0) * clusterMask * 0.85;
+    float clusterStars = max(1.0 - StableStarField(viewPos * 740.0, 0.981), 0.0);
+    clusterStars = exp(clusterStars * -19.0) * clusterMask * 1.1;
 
-    vec3 result = (primaryStar * magnitude * twinkle * starColor) 
-                + (secondaryStar * vec3(0.80, 0.88, 1.00))
-                + (clusterStars * vec3(0.70, 0.85, 1.00));
+    vec3 result = (primaryStar * magnitude * twinkle * starColor * 1.35) 
+                + (secondaryStar * vec3(0.82, 0.90, 1.00))
+                + (clusterStars * vec3(0.72, 0.88, 1.05));
 
     return result;
 }
@@ -150,47 +150,47 @@ vec3 renderEnhancedStars(vec3 viewPos, float time) {
 vec3 renderMilkyWay(vec3 orbitDir) {
     vec3 galacticNormal = normalize(vec3(0.45, 0.62, -0.64));
     float bandDist = abs(dot(orbitDir, galacticNormal));
-    float bandEnvelope = exp(-bandDist * bandDist * 16.0);
+    float bandEnvelope = exp(-bandDist * bandDist * 15.0);
 
-    if (bandEnvelope < 0.003) return vec3(0.0);
+    if (bandEnvelope < 0.002) return vec3(0.0);
 
     // Galactic center coordinates (Sagittarius A* core bulge)
     vec3 galacticCenter = normalize(vec3(-0.64, 0.18, 0.48));
     float coreDist = length(cross(orbitDir, galacticCenter));
-    float coreBulge = exp(-coreDist * coreDist * 7.5) * exp(-bandDist * bandDist * 6.0);
+    float coreBulge = exp(-coreDist * coreDist * 7.0) * exp(-bandDist * bandDist * 5.5);
 
     // Multi-octave stellar cloud structure
     float cloud1 = starFbm(orbitDir * 4.2);
     float cloud2 = starValueNoise(orbitDir * 8.5 + vec3(2.1, -1.4, 3.7));
-    float cloudStructure = cloud1 * 0.7 + cloud2 * 0.3;
+    float cloudStructure = cloud1 * 0.68 + cloud2 * 0.32;
 
     // The Great Rift (dark interstellar absorption dust lanes)
     float dustNoise = starFbm(orbitDir * 8.0 + vec3(4.2, 1.8, -3.1));
-    float dustLane = smoothstep(0.35, 0.65, dustNoise);
-    float dustRift = 1.0 - (exp(-bandDist * bandDist * 55.0) * dustLane * 0.82);
+    float dustLane = smoothstep(0.32, 0.66, dustNoise);
+    float dustRift = 1.0 - (exp(-bandDist * bandDist * 50.0) * dustLane * 0.80);
 
-    // Galactic colors: Warm amber core + luminous violet-blue disk + faint H-II emission nebulae
-    vec3 diskColor = vec3(0.12, 0.18, 0.36);
-    vec3 coreColor = vec3(0.48, 0.34, 0.38);
-    vec3 hAlphaPink = vec3(0.55, 0.14, 0.32);
+    // Galactic colors: Warm amber-gold core + luminous violet-blue disk + faint H-II emission nebulae
+    vec3 diskColor = vec3(0.15, 0.22, 0.45);
+    vec3 coreColor = vec3(0.65, 0.48, 0.38);
+    vec3 hAlphaPink = vec3(0.65, 0.16, 0.40);
 
-    float hAlphaRegions = pow(clamp(starValueNoise(orbitDir * 12.0) - 0.65, 0.0, 1.0) * 3.0, 2.0);
+    float hAlphaRegions = pow(clamp(starValueNoise(orbitDir * 12.0) - 0.62, 0.0, 1.0) * 3.0, 2.0);
 
     vec3 nebulaColor = mix(diskColor, coreColor, cloudStructure);
-    nebulaColor += hAlphaPink * hAlphaRegions * 0.35;
-    nebulaColor += coreColor * coreBulge * 1.6;
+    nebulaColor += hAlphaPink * hAlphaRegions * 0.45;
+    nebulaColor += coreColor * coreBulge * 2.2;
 
-    float finalBrightness = bandEnvelope * cloudStructure * dustRift * 0.46;
+    float finalBrightness = bandEnvelope * cloudStructure * dustRift * 1.35;
     return nebulaColor * finalBrightness;
 }
 
-// Photorealistic flowing Northern Lights (Aurora Borealis) ribbon curtains
+// Photorealistic flowing Northern Lights (Aurora Borealis) with animated dancing waves & ray shimmer
 vec3 renderAuroraBorealis(vec3 viewDir, float time, float rain) {
     if (viewDir.y <= 0.02) return vec3(0.0);
 
     // Horizon fade & smooth zenith blend
-    float horizonFade = smoothstep(0.02, 0.22, viewDir.y);
-    float zenithFade = 1.0 - smoothstep(0.85, 1.0, viewDir.y) * 0.45;
+    float horizonFade = smoothstep(0.02, 0.24, viewDir.y);
+    float zenithFade = 1.0 - smoothstep(0.85, 1.0, viewDir.y) * 0.40;
     float weatherFade = clamp(1.0 - rain * 1.3, 0.0, 1.0);
 
     // Project view direction onto aurora altitude plane
@@ -198,73 +198,74 @@ vec3 renderAuroraBorealis(vec3 viewDir, float time, float rain) {
     float x = skyPos.x;         // East-West axis
     float z = -skyPos.y;        // North-South axis (z > 0 is facing North)
 
-    // Auroral zone mask: Aurora naturally spans the Northern sky
-    float northMask = smoothstep(-0.35, 0.55, z);
+    // Auroral zone mask: Aurora spans an expansive northern celestial canopy
+    float northMask = smoothstep(-0.65, 0.35, z);
     if (northMask <= 0.001) return vec3(0.0);
 
-    float slowTime = time * 0.038;
+    // Dynamic, visibly dancing animation speed
+    float auroraTime = time * 0.16;
     vec3 auroraAccum = vec3(0.0);
 
-    // Base arc shape across northern sky (arched parabolic ribbon)
-    float baseArc = 1.95 + 0.11 * (x * x);
-    float mainWave = sin(x * 0.42 + slowTime * 1.25) * 0.52 
-                   + sin(x * 0.88 - slowTime * 0.75) * 0.24 
-                   + auroraNoise(vec2(x * 0.35, slowTime * 0.4)) * 0.45;
+    // Base arc shape across northern sky with multi-harmonic flowing waves
+    float baseArc = 1.90 + 0.10 * (x * x);
+    float mainWave = sin(x * 0.52 + auroraTime * 1.35) * 0.58 
+                   + sin(x * 1.15 - auroraTime * 0.85) * 0.30 
+                   + auroraNoise(vec2(x * 0.40, auroraTime * 0.45)) * 0.48;
 
     // Soft atmospheric diffuse glow around the aurora belt
     float beltDist = abs(z - (baseArc + mainWave * 0.5));
-    float diffuseGlow = exp(-beltDist * 0.85) * smoothstep(0.05, 0.4, viewDir.y) * 0.28;
-    vec3 diffuseCol = vec3(0.03, 0.28, 0.20);
+    float diffuseGlow = exp(-beltDist * 0.75) * smoothstep(0.05, 0.42, viewDir.y) * 0.35;
+    vec3 diffuseCol = vec3(0.04, 0.36, 0.24);
 
     // Realistic color palette across altitude layers:
     // Base: Pure luminous emerald green (557.7 nm atomic oxygen)
-    const vec3 cEmerald = vec3(0.05, 0.98, 0.44);
+    const vec3 cEmerald = vec3(0.06, 1.05, 0.46);
     // Lower-mid: Vibrant aquamarine / cyan
-    const vec3 cCyan    = vec3(0.03, 0.82, 0.86);
+    const vec3 cCyan    = vec3(0.04, 0.88, 0.94);
     // Upper-mid: Ethereal deep violet / royal purple
-    const vec3 cViolet  = vec3(0.48, 0.16, 0.92);
+    const vec3 cViolet  = vec3(0.55, 0.18, 0.98);
     // Top crown: High-altitude crimson / magenta / rose (630.0 nm atomic oxygen)
-    const vec3 cCrimson = vec3(0.86, 0.12, 0.48);
+    const vec3 cCrimson = vec3(0.96, 0.14, 0.54);
 
-    // Raymarch through 5 vertical altitude layers (curtain folds & rays)
+    // Raymarch through 5 vertical altitude layers (curtain folds & dancing rays)
     for (int i = 0; i < 5; i++) {
         float h = float(i) / 4.0; // Normalized altitude: 0 = base (~100km), 1 = crown (~250km)
 
         // Curtain drift with altitude (magnetic field line inclination)
-        float drift = h * (0.35 * sin(x * 0.32 + slowTime * 0.8) + 0.2);
+        float drift = h * (0.38 * sin(x * 0.35 + auroraTime * 0.9) + 0.22);
 
-        // --- PRIMARY CURTAIN ---
+        // --- PRIMARY DANCING CURTAIN ---
         float ribbonCenter1 = baseArc + mainWave + drift;
         float d1 = abs(z - ribbonCenter1);
 
-        // Vertical rays / chiffon folds following magnetic field lines
-        float rayCoord = x * 3.6 + slowTime * 1.1;
-        float rayDetail = auroraNoise(vec2(rayCoord, h * 5.2 - slowTime * 1.8));
-        float foldPattern = 0.40 + 0.60 * sin(rayCoord * 1.8 + rayDetail * 4.8);
-        foldPattern = pow(clamp(foldPattern, 0.0, 1.0), 1.9);
+        // Vertical rays / shimmering chiffon folds dancing horizontally
+        float rayCoord = x * 4.2 + auroraTime * 1.5;
+        float rayDetail = auroraNoise(vec2(rayCoord, h * 5.8 - auroraTime * 2.1));
+        float foldPattern = 0.35 + 0.65 * sin(rayCoord * 2.1 + rayDetail * 5.0 + sin(auroraTime * 1.6 + x) * 0.7);
+        foldPattern = pow(clamp(foldPattern, 0.0, 1.0), 2.1);
 
         // Curtain profile: sharp, dense base transitioning to ethereal diffuse top
-        float thickness1 = 0.14 + h * 0.32;
+        float thickness1 = 0.15 + h * 0.35;
         float profile1 = exp(-d1 * d1 / (thickness1 * thickness1));
-        float baseIntensity1 = exp(-h * 2.2) * 1.6;
-        float bodyIntensity1 = (1.0 - h * 0.38) * (0.35 + 0.65 * foldPattern);
+        float baseIntensity1 = exp(-h * 2.0) * 1.7;
+        float bodyIntensity1 = (1.0 - h * 0.35) * (0.35 + 0.65 * foldPattern);
         float curtainAlpha1 = profile1 * (baseIntensity1 + bodyIntensity1);
 
-        // --- SECONDARY CURTAIN (Parallel background ribbon for realistic depth) ---
-        float ribbonCenter2 = baseArc + 0.95 + sin(x * 0.55 - slowTime * 1.05) * 0.38 + drift * 0.8;
+        // --- SECONDARY DANCING CURTAIN (Parallel background ribbon) ---
+        float ribbonCenter2 = baseArc + 0.92 + sin(x * 0.62 - auroraTime * 1.15) * 0.44 + drift * 0.85;
         float d2 = abs(z - ribbonCenter2);
-        float rayCoord2 = x * 2.8 - slowTime * 0.9;
-        float foldPattern2 = pow(clamp(0.45 + 0.55 * sin(rayCoord2 * 2.2 + h * 4.0), 0.0, 1.0), 1.8);
-        float thickness2 = 0.18 + h * 0.38;
+        float rayCoord2 = x * 3.2 - auroraTime * 1.05;
+        float foldPattern2 = pow(clamp(0.40 + 0.60 * sin(rayCoord2 * 2.5 + h * 4.2 + auroraTime * 0.8), 0.0, 1.0), 1.9);
+        float thickness2 = 0.18 + h * 0.40;
         float profile2 = exp(-d2 * d2 / (thickness2 * thickness2));
-        float curtainAlpha2 = profile2 * (1.0 - h * 0.45) * (0.3 + 0.7 * foldPattern2) * 0.55;
+        float curtainAlpha2 = profile2 * (1.0 - h * 0.42) * (0.3 + 0.7 * foldPattern2) * 0.65;
 
         // Altitude color blending
-        vec3 layerCol = mix(cEmerald, cCyan, smoothstep(0.08, 0.42, h));
-        layerCol = mix(layerCol, cViolet, smoothstep(0.38, 0.75, h));
-        layerCol = mix(layerCol, cCrimson, smoothstep(0.70, 0.98, h));
+        vec3 layerCol = mix(cEmerald, cCyan, smoothstep(0.06, 0.40, h));
+        layerCol = mix(layerCol, cViolet, smoothstep(0.36, 0.74, h));
+        layerCol = mix(layerCol, cCrimson, smoothstep(0.68, 0.98, h));
 
-        auroraAccum += layerCol * (curtainAlpha1 + curtainAlpha2) * 0.25;
+        auroraAccum += layerCol * (curtainAlpha1 + curtainAlpha2) * 0.28;
     }
 
     auroraAccum += diffuseCol * diffuseGlow;

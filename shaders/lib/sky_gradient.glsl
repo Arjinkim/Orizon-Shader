@@ -8,16 +8,14 @@ vec3 drawSun(float cosY, float sunInt,vec3 nsunlight,vec3 inColor){
 }
 
 vec3 drawMoon(vec3 PlayerPos, vec3 WorldSunVec, vec3 Color, inout vec3 occludeStars){
+	float lunarDist = dot(WorldSunVec + PlayerPos, PlayerPos);
+	float Shape = clamp((exp(1.0 + -1000.0 * lunarDist) - 1.5), 0.0, 25.0);
+	occludeStars *= max(1.0 - Shape * 6.0, 0.0);
 
-	float Shape = clamp((exp(1 + -1000 * dot(WorldSunVec+PlayerPos,PlayerPos)) - 1.5),0.0,25.0);
-	occludeStars *= max(1.0-Shape*5,0.0);
+	float shape2 = pow(exp(Shape * -10.0), 0.15) * 255.0;
+	vec3 sunNormal = vec3(dot(WorldSunVec + PlayerPos, vec3(shape2, 0.0, 0.0)), dot(PlayerPos + WorldSunVec, vec3(0.0, shape2, 0.0)), -dot(WorldSunVec, PlayerPos) * 15.0);
 
-	float shape2 = pow(exp(Shape * -10),0.15) * 255.0;
-
-	vec3 sunNormal = vec3(dot(WorldSunVec+PlayerPos, vec3(shape2,0,0)), dot(PlayerPos+WorldSunVec, vec3(0,shape2,0)), -dot(WorldSunVec, PlayerPos) * 15.0);
-
-
-	// even has a little tilt approximation haha.... yeah....
+	// Moon phase illumination vectors
 	vec3[8] phase = vec3[8](
 		vec3( -1.0,	 -0.5,	 1.0	),
 		vec3( -1.0,	 -0.5,	 0.35	),
@@ -28,13 +26,28 @@ vec3 drawMoon(vec3 PlayerPos, vec3 WorldSunVec, vec3 Color, inout vec3 occludeSt
 		vec3(  1.0,	 0.25,	 0.2	),
 		vec3(  1.0,	 0.25,	 0.35	)
 	);
-	
 	vec3 LightDir = phase[moonPhase];
 
-	float lunarDist = dot(WorldSunVec+PlayerPos, PlayerPos);
-	float lunarHalo = exp(-abs(lunarDist) * 280.0) * 0.009;
+	// Procedural Lunar Surface (Lunar Maria & Highland Craters)
+	vec2 discUV = sunNormal.xy * 0.06;
+	float craterNoise = sin(discUV.x * 14.0 + 1.2) * cos(discUV.y * 12.0 - 0.8) 
+	                  + sin(discUV.x * 29.0 - discUV.y * 23.0) * 0.45
+	                  + sin(discUV.x * 55.0 + discUV.y * 48.0) * 0.25;
+	float lunarMaria = clamp(0.72 + 0.28 * sin(craterNoise * 2.2), 0.45, 1.0);
 
-	return Shape * pow(clamp(dot(sunNormal,LightDir)/5,0.0,1.5),5) * Color  + clamp(Shape * 4.0 * pow(shape2/200,2.0),0.0,1.0)*0.004 + Color * lunarHalo;
+	// Multi-layer Celestial Moonlight Radiance & Atmospheric Halos
+	float innerCorona = exp(-abs(lunarDist) * 180.0) * 0.045;
+	float midHalo     = exp(-abs(lunarDist) * 32.0)  * 0.022;
+	float outerAura   = exp(-abs(lunarDist) * 7.5)   * 0.009;
+
+	vec3 moonGlowColor = mix(Color, vec3(0.72, 0.86, 1.08), 0.65);
+	vec3 lunarHalo = moonGlowColor * (innerCorona + midHalo + outerAura);
+
+	float moonPhaseLighting = pow(clamp(dot(sunNormal, LightDir) / 5.0, 0.0, 1.5), 5.0);
+	vec3 moonDisc = Shape * moonPhaseLighting * Color * lunarMaria 
+	              + clamp(Shape * 4.0 * pow(shape2 / 200.0, 2.0), 0.0, 1.0) * 0.006;
+
+	return moonDisc + lunarHalo;
 }
 
 const float pi = 3.141592653589793238462643383279502884197169;

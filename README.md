@@ -17,10 +17,13 @@ The primary objective of Orizon Shader is to deliver a balanced, cinematic visua
 * **Cull Guard Safety**: Restricts vertex transformations on unassigned or invalid LOD indices across solid, translucent, and shadow passes.
 * **Atmospheric Distance Fog Blending**: Features an extended logarithmic depth blending algorithm that seamlessly merges standard chunk boundaries with Distant Horizons LOD geometry without visible seams or clipping planes.
 
-### 2. Atmospheric Simulation and Volumetric Optics
+### 2. Atmospheric Simulation, Nocturnal Celestial Optics, and Volumetrics
 * **Rayleigh and Mie Scattering**: Employs an analytical atmospheric scattering model that accurately simulates daylight transitions from dawn, midday, golden hour, to astronomical twilight.
 * **Multi-Layered Volumetric Clouds**: Implements ray-marched 3D cloud coverage with dynamic density variation, altitude-dependent shading, and directional sunlight absorption.
-* **Adaptive Horizon Fog**: Dynamic horizon haze density calculation that adjusts based on weather profiles, elevation, biome conditions, and solar elevation.
+* **Animated Dancing Aurora Borealis**: Multi-harmonic flowing Northern Lights ribbons rippling across the northern celestial dome with real-time curtain flutter and physical altitude spectral emissions (557.7nm emerald base, cyan, violet, and 630.0nm crimson crown).
+* **Photorealistic Lunar Corona and Surface Maria**: Renders the lunar disc with procedurally calculated basalt seas (lunar maria) and impact crater topography, framed by multi-stage celestial halos and soft moonlight scattering.
+* **Milky Way Galactic Core and Scintillating Stars**: Detailed galactic disk structure with bright Sagittarius A* core bulge, dark cosmic dust rifts, stellar cluster formations (Pleiades), and atmospheric twinkling across blackbody stellar classifications.
+* **Procedural Nocturnal Fireflies**: Ambient bioluminescent particle simulation generating soft, flickering golden-emerald fireflies hovering over grass and forest undergrowth on clear nights.
 
 ### 3. Lighting, Shadows, and Surface Optics
 * **Distortion-Protected Shadow Projection**: Integrates logarithmic shadow map distortion with near-zero singularity guards to eliminate projection artifacts and geometric tearing along shadow frustum boundaries.

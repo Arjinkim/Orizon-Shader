@@ -167,6 +167,7 @@ vec3 toScreenSpace(vec3 p) {
 #include "/lib/Shadow_Params.glsl"
 #include "/lib/Shadows.glsl"
 #include "/lib/stars.glsl"
+#include "/lib/fireflies.glsl"
 
 #ifdef OVERWORLD_SHADER
 	
@@ -949,12 +950,12 @@ void main() {
 
 				float nightVisibility = clamp(-unsigned_WsunVec.y*2.0,0.0,1.0);
 				#ifdef STAR_TWINKLE
-					Background += renderEnhancedStars(orbitstar, frameTimeCounter) * 11.0 * nightVisibility * (1.0 - rainStrength);
+					Background += renderEnhancedStars(orbitstar, frameTimeCounter) * 16.0 * nightVisibility * (1.0 - rainStrength);
 				#else
-					Background += stars(orbitstar) * 10.0 * nightVisibility;
+					Background += stars(orbitstar) * 14.0 * nightVisibility;
 				#endif
 				#ifdef MILKY_WAY_NEBULA
-					Background += renderMilkyWay(orbitstar) * nightVisibility * (1.0 - rainStrength);
+					Background += renderMilkyWay(orbitstar) * 3.2 * nightVisibility * (1.0 - rainStrength);
 				#endif
 
 				#if !defined ambientLight_only && (RESOURCEPACK_SKY == 1 || RESOURCEPACK_SKY == 0)
@@ -1350,6 +1351,10 @@ void main() {
 
     	gl_FragData[0].rgb = gl_FragData[0].rgb * vlBehingTranslucents.a + vlBehingTranslucents.rgb;
 	}
+
+	#if defined NIGHT_FIREFLIES && defined OVERWORLD_SHADER
+		gl_FragData[0].rgb += renderNocturnalFireflies(feetPlayerPos_normalized, length(feetPlayerPos), cameraPosition, frameTimeCounter, clamp(-unsigned_WsunVec.y * 2.0, 0.0, 1.0), rainStrength);
+	#endif
 
 	////// DEBUG VIEW STUFF
 	#if DEBUG_VIEW == debug_SHADOWMAP	

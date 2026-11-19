@@ -747,3 +747,16 @@ option.TOGGLE_VL_FOG = Toggle Volumetric Fog
 option.TOGGLE_VL_FOG.comment = one big button to just turn all the fog off.
 
 option.TRANSLUCENT_COLORED_SHADOWS.comment = §bWhat is this?§r This effect allows translucent things like stained glass to color the sunlight as it passes through it. §aPERFORMANCE COST:§r medium
+screen.Night_Sky = Night Sky & Atmosphere
+    option.AURORA_BOREALIS = Aurora Borealis
+    option.AURORA_BOREALIS.comment = Dynamic, flowing Northern Lights curtains across the northern sky with realistic altitude color transitions (emerald, cyan, violet, and crimson).
+    option.AURORA_BRIGHTNESS = Aurora Brightness
+    option.AURORA_BRIGHTNESS.comment = Adjust the intensity and radiance of the Aurora Borealis.
+    option.MILKY_WAY_NEBULA = Milky Way Galaxy
+    option.MILKY_WAY_NEBULA.comment = Procedural Milky Way galactic band with bright core bulge (Sagittarius A*), cosmic dust rifts, and emission nebulae.
+    option.STAR_TWINKLE = Enhanced Stars & Scintillation
+    option.STAR_TWINKLE.comment = Multi-tier stellar blackbody colors (blue-white to red supergiants) with atmospheric twinkle and Pleiades open cluster.
+    option.NIGHT_FIREFLIES = Nocturnal Fireflies
+    option.NIGHT_FIREFLIES.comment = Floating, flickering bioluminescent fireflies hovering over grass and in forests on clear nights.
+    option.FIREFLY_BRIGHTNESS = Firefly Glow Brightness
+    option.FIREFLY_BRIGHTNESS.comment = Brightness of nocturnal firefly bioluminescence.
