@@ -1,0 +1,32 @@
+name: Release Build
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Package Orizon Shader ZIP
+        run: |
+          mkdir -p dist
+          zip -r dist/Orizon-Shader.zip . -x "*.git*" ".github/*"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: Orizon Shader ${{ github.ref_name }}
+          files: dist/Orizon-Shader.zip
+          draft: false
+          prerelease: false
+          generate_release_notes: true

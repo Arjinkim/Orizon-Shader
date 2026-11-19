@@ -27,14 +27,24 @@ The primary objective of Orizon Shader is to deliver a balanced, cinematic visua
 * **Translucent Colored Shadows**: Full light transmission and tint attenuation through colored glass and translucent barriers.
 * **Subsurface Scattering (SSS)**: Approximates light diffusion through thin materials including foliage, grass, leaves, and organic structures.
 * **Colored Voxel Illumination**: Full compatibility with Iris-based voxel floodfill lighting for emissive blocks and handheld light sources.
+* **Configurable Night and Cave Brightness**: Adjustable minimum light illuminance slider (`MIN_LIGHT_AMOUNT`), allowing players to calibrate visibility in subterranean environments and moonless nights for comfortable survival gameplay.
 
-### 4. Surface Motion and Environmental Dynamics
+### 4. Surface Motion, Water Optics, and Precipitation
 * **Procedural Foliage Swaying**: Wind velocity vector equations applied to plants, canopy leaves, and tall grass with biome-dependent wave speed and amplitude.
-* **Dynamic Water Simulation**: Multi-octave wave generation with physically calculated refraction, specular highlights, and Fresnel-based surface reflectance.
+* **Dynamic Water Simulation and Biome Tinting**: Multi-octave wave generation with physically calculated refraction, specular highlights, Snell's window effect, underwater caustics, and automatic watercolor adaptation based on biome geography (e.g., swamps, rivers, warm oceans).
+* **Precipitation Wetness and Puddles**: Dynamic PBR surface puddle generation responding to active rain cycles with reflective surface pooling.
 
-### 5. Multi-Language Localization
+### 5. Configured Profile Presets
+Orizon Shader includes calibrated rendering presets accessible directly via the in-game profile selector:
+* **Quality (Cinematic Vista)**: Maximum visual fidelity featuring 2048 shadow map resolution, multi-layer volumetric clouds, biome-tinted water, and high-sample ambient occlusion.
+* **Performance (FPS Boost)**: Optimized for sustained high frame rates with reduced shadow draw distance and streamlined cloud ray-marching.
+* **Survival Balanced**: Engineered specifically for gameplay comfort, providing enhanced subterranean ambient illumination, expanded handheld torch radiance, and balanced rendering overhead.
+* **Vibrant Fantasy**: Elevated color saturation and warm chromatic balance, offering a stylized, picturesque visual presentation.
+
+### 6. Multi-Language Localization and Packaging
 * **Complete Interface Translation**: Fully localized in native English (`en_us`) and Thai (`th_th`), covering all setting screens, parameter sliders, technical explanations, and debug menus.
 * **Standardized Technical Nomenclature**: Clear, professional terminology without encoding corruption or visual clutter in the game UI.
+* **Embedded Shaderpack Icon**: Includes high-resolution `icon.png` metadata asset recognized automatically by Iris Shaders and modern shader management interfaces.
 
 ---
 

@@ -1,9 +1,19 @@
 profile.SHADER_VERSION_LABEL = Orizon Shader
 profile.OLD_BLISS_TONEMAP = Orizon Shader + v2.0.4 Color Processing
 
-# if you're here to translate, this is a joke, these don't do what they say
-profile.QUALITY=Quality
-profile.PERFORMANCE=Performance
+profile.QUALITY = Quality (Cinematic Vista)
+profile.QUALITY.comment = Maximum visual fidelity with 2048 shadow resolution, full volumetric clouds, dynamic water tinting, and high-quality ambient occlusion.
+profile.PERFORMANCE = Performance (FPS Boost)
+profile.PERFORMANCE.comment = Optimized for higher frame rates with reduced shadow distance, optimized shadow samples, and faster cloud ray-marching.
+profile.SURVIVAL = Survival Balanced
+profile.SURVIVAL.comment = Optimized for gameplay with brighter night and cave visibility, longer handheld torch radius, and balanced performance.
+profile.VIBRANT = Vibrant Fantasy
+profile.VIBRANT.comment = Rich, vivid colors with increased saturation, warm sunlight, and enhanced atmosphere.
+
+option.BIOME_TINT_WATER = Biome Water Tint
+option.BIOME_TINT_WATER.comment = Tint water color according to the current biome (e.g. warm ocean, swamp, river).
+option.WATER_CAUSTICS_BRIGHTNESS = Water Caustics Brightness
+option.WATER_CAUSTICS_BRIGHTNESS.comment = Brightness of animated light refraction patterns underwater.
 
 screen.Misc_Settings = §cDebugging§r/Experimental Settings
 screen.Sun_and_Moon_Colors = Sun/Moon Colors

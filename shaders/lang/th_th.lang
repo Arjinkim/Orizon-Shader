@@ -1,9 +1,19 @@
 profile.SHADER_VERSION_LABEL = Orizon Shader
 profile.OLD_BLISS_TONEMAP = Orizon Shader + v2.0.4 โทนสีเดิม
 
-# if you're here to translate, this is a joke, these don't do what they say
-profile.QUALITY = เน้นภาพสวย (Quality)
-profile.PERFORMANCE = เน้นลื่นไหล (Performance)
+profile.QUALITY = คุณภาพสูงสุด (Cinematic Vista)
+profile.QUALITY.comment = เน้นภาพสวยสมจริง ความละเอียดเงา 2048, เมฆ 3D เต็มชั้น, สีน้ำตามไบโอม และแสงเงาความละเอียดสูง
+profile.PERFORMANCE = เน้นลื่นไหล (FPS Boost)
+profile.PERFORMANCE.comment = ปรับแต่งเพื่อเฟรมเรตสูงสุด ลดระยะเรนเดอร์เงาและคำนวณเมฆแบบประหยัดพลังงาน
+profile.SURVIVAL = สมดุลเล่นจริง (Survival)
+profile.SURVIVAL.comment = เหมาะสำหรับเอาชีวิตรอด กลางคืนและในถ้ำมองเห็นชัดเจนขึ้น รัศมีแสงคบเพลิงในมือกว้างขึ้น ลื่นไหลสบายตา
+profile.VIBRANT = สีสันสดใส (Vibrant Fantasy)
+profile.VIBRANT.comment = โทนสีสดใส มีชีวิตชีวา แดดอุ่น ท้องฟ้าและพืชพรรณเขียวสดใสสไตล์แฟนตาซี
+
+option.BIOME_TINT_WATER = สีน้ำตามไบโอม (Biome Tint)
+option.BIOME_TINT_WATER.comment = ปรับสีน้ำให้เปลี่ยนตามสภาพแวดล้อมและไบโอม เช่น หนองน้ำ ทะเลอุ่น แม่น้ำ
+option.WATER_CAUSTICS_BRIGHTNESS = ความสว่างประกายน้ำ (Caustics)
+option.WATER_CAUSTICS_BRIGHTNESS.comment = ความสว่างของลวดลายแสงระยิบระยับใต้ผิวน้ำ
 
 screen.Misc_Settings = เมนู§cทดสอบระบบ§r/ทดลอง (Debug)
 screen.Sun_and_Moon_Colors = โทนสีดวงอาทิตย์และจันทร์
