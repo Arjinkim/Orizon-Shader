@@ -115,10 +115,6 @@ void main() {
 		gl_Position = vec4(2.0, 2.0, 2.0, 1.0);
 		return;
 	}
-	if (uint(gl_VertexID) >= 0x20000000u) {
-		gl_Position = vec4(2.0, 2.0, 2.0, 1.0);
-		return;
-	}
 
 	// lmtexcoord.xy = (gl_MultiTexCoord0).xy;
 	lmtexcoord.xy = (gl_TextureMatrix[0] * gl_MultiTexCoord0).xy;

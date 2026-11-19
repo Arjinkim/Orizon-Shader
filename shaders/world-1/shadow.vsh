@@ -50,10 +50,6 @@ void main() {
 		gl_Position = vec4(2.0, 2.0, 2.0, 1.0);
 		return;
 	}
-	if (uint(gl_VertexID) >= 0x20000000u) {
-		gl_Position = vec4(2.0, 2.0, 2.0, 1.0);
-		return;
-	}
 	#if defined IS_LPV_ENABLED && defined MC_GL_EXT_shader_image_load_store
 		#ifdef LPV_NOSHADOW_HACK
 			vec3 playerpos = gl_Vertex.xyz;
