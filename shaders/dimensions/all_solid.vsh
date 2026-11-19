@@ -512,29 +512,33 @@ void main() {
 	#ifdef WAVY_PLANTS
 		// also use normal, so up/down facing geometry does not get detatched from its model parts.
 		bool InterpolateFromBase = gl_MultiTexCoord0.t < max(mc_midTexCoord.t, abs(viewToWorld(FlatNormals).y));
-		int blockId = int(mc_Entity.x + 0.5);
-
-		bool isGroundPlant = (blockId == BLOCK_GRASS_TALL_LOWER || blockId == BLOCK_GROUND_WAVING || blockId == BLOCK_GRASS_SHORT || blockId == BLOCK_SAPLING || blockId == BLOCK_GROUND_WAVING_VERTICAL);
-		bool isCeilingPlant = (blockId == 17);
-		bool isAirWaving = (blockId == BLOCK_GRASS_TALL_UPPER || blockId == BLOCK_AIR_WAVING);
 
 		float distToCam = length(position.xyz);
 
 		if(	
-			((InterpolateFromBase && isGroundPlant) || (!InterpolateFromBase && isCeilingPlant) || isAirWaving)
-			&& distToCam < float(WAVY_RADIUS)
+			(
+				// these wave off of the ground. the area connected to the ground does not wave.
+				(InterpolateFromBase && (mc_Entity.x == BLOCK_GRASS_TALL_LOWER || mc_Entity.x == BLOCK_GROUND_WAVING || mc_Entity.x == BLOCK_GRASS_SHORT || mc_Entity.x == BLOCK_SAPLING || mc_Entity.x == BLOCK_GROUND_WAVING_VERTICAL)) 
+
+				// these wave off of the ceiling. the area connected to the ceiling does not wave.
+				|| (!InterpolateFromBase && (mc_Entity.x == 17))
+
+				// these wave off of the air. they wave uniformly
+				|| (mc_Entity.x == BLOCK_GRASS_TALL_UPPER || mc_Entity.x == BLOCK_AIR_WAVING)
+
+			) && distToCam < 64.0
 		){
-			float distanceFade = smoothstep(float(WAVY_RADIUS), float(WAVY_RADIUS) * 0.70, distToCam);
+			float distanceFade = 1.0 - smoothstep(44.0, 64.0, distToCam);
 
    			vec3 worldpos = mat3(gbufferModelViewInverse) * position + gbufferModelViewInverse[3].xyz;
 			vec3 UnalteredWorldpos = worldpos;
 
 			// apply displacement for waving plant blocks
-			worldpos += calcMovePlants(worldpos + cameraPosition) * (clamp(lmtexcoord.w * 1.5, 0.5, 1.0) * distanceFade);
+			worldpos += calcMovePlants(worldpos + cameraPosition) * (max(lmtexcoord.w, 0.5) * distanceFade);
 
 			// apply displacement for waving leaf blocks specifically, overwriting the other waving mode. these wave off of the air. they wave uniformly
 			#ifdef WAVY_LEAVES
-			if(blockId == BLOCK_AIR_WAVING) worldpos = UnalteredWorldpos + calcMoveLeaves(worldpos + cameraPosition) * (clamp(lmtexcoord.w * 1.5, 0.65, 1.0) * distanceFade);
+			if(mc_Entity.x == BLOCK_AIR_WAVING) worldpos = UnalteredWorldpos + calcMoveLeaves(worldpos + cameraPosition) * (max(lmtexcoord.w, 0.65) * distanceFade);
 			#endif
 		
 			position = mat3(gbufferModelView) * worldpos + gbufferModelView[3].xyz;

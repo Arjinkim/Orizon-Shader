@@ -280,7 +280,6 @@ void main() {
 		// also use normal, so up/down facing geometry does not get detatched from its model parts.
 		bool InterpolateFromBase = gl_MultiTexCoord0.t < max(mc_midTexCoord.t, abs(viewToWorld(normalize(gl_NormalMatrix * gl_Normal)).y));
 
-		int blockId = int(mc_Entity.x + 0.5);
 		bool isGroundPlant = (blockId == BLOCK_GRASS_TALL_LOWER || blockId == BLOCK_GROUND_WAVING || blockId == BLOCK_GRASS_SHORT || blockId == BLOCK_SAPLING || blockId == BLOCK_GROUND_WAVING_VERTICAL);
 		bool isCeilingPlant = (blockId == BLOCK_VINE_OTHER);
 		bool isAirWaving = (blockId == BLOCK_GRASS_TALL_UPPER || blockId == BLOCK_AIR_WAVING);
@@ -289,9 +288,9 @@ void main() {
 
 		if(	
 			((InterpolateFromBase && isGroundPlant) || (!InterpolateFromBase && isCeilingPlant) || isAirWaving)
-			&& distToCam < float(WAVY_RADIUS)
+			&& distToCam < 64.0
 		){
-			float shadowFade = smoothstep(float(WAVY_RADIUS), float(WAVY_RADIUS) * 0.70, distToCam);
+			float shadowFade = 1.0 - smoothstep(44.0, 64.0, distToCam);
 			vec3 worldpos = playerpos;
 
 			// apply displacement for waving plant blocks
