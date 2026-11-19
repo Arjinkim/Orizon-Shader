@@ -1,3 +1,8 @@
+#ifdef Hand_Held_lights
+uniform int heldItemId;
+uniform int heldItemId2;
+#endif
+
 vec3 GetHandLight(const in int itemId, const in vec3 playerPos, const in vec3 normal) {
     if (itemId <= 0) return vec3(0.0);
 

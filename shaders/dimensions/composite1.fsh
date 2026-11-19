@@ -131,10 +131,7 @@ flat varying vec3 WsunVec;
 flat varying vec3 unsigned_WsunVec;
 flat varying float exposure;
 
-#ifdef IS_LPV_ENABLED
-	uniform int heldItemId;
-	uniform int heldItemId2;
-#endif
+
 
 
 void convertHandDepth(inout float depth) {

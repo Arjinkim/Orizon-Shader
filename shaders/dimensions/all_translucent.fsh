@@ -123,8 +123,6 @@ uniform vec3 previousCameraPosition;
 #endif
 
 #ifdef IS_LPV_ENABLED
-	uniform int heldItemId;
-	uniform int heldItemId2;
 
 	#include "/lib/hsv.glsl"
 	#include "/lib/lpv_common.glsl"
