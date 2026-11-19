@@ -788,3 +788,5 @@ option.WAVY_RAIN_MULTIPLIER = Rain Wind Sway Multiplier
 option.WAVY_RAIN_MULTIPLIER.comment = How vigorously plants and leaves sway during rainfall (e.g. 2.2x stronger than calm breeze).
 option.WAVY_STORM_MULTIPLIER = Storm Wind Sway Multiplier
 option.WAVY_STORM_MULTIPLIER.comment = How violently plants, trees, and leaves whip and shake during severe storms and thunderstorms (e.g. 3.8x stronger).
+option.WAVY_RADIUS = Waving Radius Around Player
+option.WAVY_RADIUS.comment = Distance around the player where trees and plants sway with the wind. Beyond this radius, foliage remains completely still for maximum performance and clean visuals.

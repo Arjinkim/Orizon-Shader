@@ -34,6 +34,10 @@ screen.Waving_Stuff = วัตถุพริ้วไหวตามลม (Wa
     option.WAVY_PLANTS = ต้นไม้ใบหญ้าไหวลม
     option.WAVY_STRENGTH = แรงสั่นไหวของพืช
     option.WAVY_SPEED = ความเร็วการไหว
+    option.WAVY_LEAVES = ใบไม้และพุ่มไม้ไหวลม
+    option.WAVY_RAIN_MULTIPLIER = ตัวคูณแรงลมขณะฝนตก
+    option.WAVY_STORM_MULTIPLIER = ตัวคูณแรงลมขณะพายุ
+    option.WAVY_RADIUS = รัศมีการไหวลมรอบตัวผู้เล่น
 
 screen.Direct_Light = แสงตรง (Direct Light)
     screen.Shadows = เงา (Shadows)
@@ -670,6 +674,10 @@ screen.Waving_Stuff.comment = ปรับแต่งการไหวเอ�
     option.WAVY_PLANTS.comment = เปิดให้พืชพรรณไหวเอนตามกระแสลม §aกินสเปก:§r ต่ำมาก
     option.WAVY_STRENGTH.comment = ความแรงในการไหวเอนของพืช
     option.WAVY_SPEED.comment = ความเร็วในการไหวเอนของพืช
+    option.WAVY_LEAVES.comment = การพลิ้วไหวและการสั่นระริกของใบไม้และพุ่มไม้ตามสายลม
+    option.WAVY_RAIN_MULTIPLIER.comment = กำหนดให้ต้นไม้และใบหญ้าไหวแรงขึ้นกี่เท่าขณะฝนตก (เช่น 2.2 เท่า)
+    option.WAVY_STORM_MULTIPLIER.comment = กำหนดให้พืชพรรณและกิ่งไม้สะบัดแรงขึ้นกี่เท่าขณะมีพายุฝนฟ้าคะนอง (เช่น 3.8 เท่า)
+    option.WAVY_RADIUS.comment = ระยะรอบตัวผู้เล่นที่ต้นไม้และใบหญ้าจะพริ้วไหวตามลม หากอยู่นอกระยะนี้ต้นไม้จะหยุดนิ่งเพื่อความลื่นไหลและภาพที่สะอาดตา
 
 screen.Post_Processing.comment = ปรับแต่งโทนภาพ คอนทราสต์ และเอฟเฟกต์ประมวลผลขั้นสุดท้าย
     screen.Tonemapping.comment = ปรับแต่งโทนภาพ โทนสี และคอนทราสต์แสงเงา
